@@ -1,2 +1,4 @@
-package org.desafio.ModeloMatematico.restricoes;public class AlocacaoDeVoluntariosEmMesmaEscala {
+package org.desafio.ModeloMatematico.restricoes;
+
+public class AlocacaoDeVoluntariosEmMesmaEscala {
 }

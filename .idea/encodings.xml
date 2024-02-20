@@ -3,5 +3,10 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/data/tb_dm_tipodeturmas-1.csv" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/data/tb_tur_cadastro.csv" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/data/tb_vol_cadastro_editado.csv" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/data/tb_vol_mesmaescala.csv" charset="UTF-8" />
+    <file url="PROJECT" charset="windows-1252" />
   </component>
 </project>

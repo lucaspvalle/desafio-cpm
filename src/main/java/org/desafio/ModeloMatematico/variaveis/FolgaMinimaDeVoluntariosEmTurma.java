@@ -1,2 +1,4 @@
-package org.desafio.ModeloMatematico.variaveis;public class FolgaMinimaDeVoluntariosEmTurma {
+package org.desafio.ModeloMatematico.variaveis;
+
+public class FolgaMinimaDeVoluntariosEmTurma {
 }

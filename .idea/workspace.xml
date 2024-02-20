@@ -5,21 +5,58 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c77c7d55-f7c5-4b66-8686-35d0155737aa" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/NivelDeConhecimento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/NivelDeConhecimento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/Turma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/Turma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/Voluntario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/Voluntario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/dao/TurmaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/dao/TurmaDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/dao/VoluntarioDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/dao/VoluntarioDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/enums/Genero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/enums/Genero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/enums/PreferenciaDeFaixaEtaria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/enums/PreferenciaDeFaixaEtaria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/enums/PreferenciaDePeriodo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/enums/PreferenciaDePeriodo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/enums/PreferenciaDeProgressaoDeTurma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/enums/PreferenciaDeProgressaoDeTurma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/AlocacaoDeVoluntariosEmMesmaEscala.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/AlocacaoDeVoluntariosEmMesmaEscala.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/MaximoDeVoluntariosEmTurma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/MaximoDeVoluntariosEmTurma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/MinimoDeVoluntariosEmTurma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/MinimoDeVoluntariosEmTurma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/AlocacaoDeVoluntarioNaTurma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/AlocacaoDeVoluntarioNaTurma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FolgaMaximaDeVoluntariosEmTurma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FolgaMaximaDeVoluntariosEmTurma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FolgaMinimaDeVoluntariosEmTurma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FolgaMinimaDeVoluntariosEmTurma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FuncaoObjetivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FuncaoObjetivo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/integracao/ImportacaoDeDados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/integracao/ImportacaoDeDados.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="8394a99f-fbad-483a-a8f4-0eb4b88ba643" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2X1olFAM5ooP87X6dqmAIAy8JiD" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -28,10 +65,29 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
-    "onboarding.tips.debug.path": "C:/Users/LucasPerini/IdeaProjects/desafio-cpm/src/main/java/org/desafio/Main.java"
+    "onboarding.tips.debug.path": "C:/Users/LucasPerini/IdeaProjects/desafio-cpm/src/main/java/org/desafio/Main.java",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.desafio.ModeloMatematico.restricoes" />
+      <recent name="org.desafio.ModeloMatematico.variaveis" />
+      <recent name="org.desafio.integracao.MappingStrategy" />
+      <recent name="org.desafio.integracao" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.desafio.Main" />
+      <module name="desafio-cpm" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -43,15 +99,26 @@
     </task>
     <servers />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
+    <option featureType="dependencySupport" implementationName="java:com.google.protobuf:protobuf-java" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/desafio/Main.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="org.desafio.importacao.CustomMappingStrategy" memberName="type" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

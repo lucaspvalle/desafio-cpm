@@ -1,11 +1,11 @@
-package org.desafio.modeloDeDados;
+package org.desafio.ModeloDeDados.enums;
 
 public enum PreferenciaDePeriodo {
     PERIODO_INDIFERENTE,
     MANHA,
     TARDE;
 
-    PreferenciaDePeriodo getPreferencia(String preferencia) {
+    public static PreferenciaDePeriodo getPreferencia(String preferencia) {
         return switch (preferencia) {
             case "Manhã" -> MANHA;
             case "Tarde" -> TARDE;

@@ -1,11 +1,11 @@
-package org.desafio.modeloDeDados;
+package org.desafio.ModeloDeDados.enums;
 
 public enum PreferenciaDeFaixaEtaria {
     FAIXA_INDIFERENTE,
     ADOLESCENTE,
     ADULTO;
 
-    PreferenciaDeFaixaEtaria getPreferencia(String preferencia) {
+    public static PreferenciaDeFaixaEtaria getPreferencia(String preferencia) {
         return switch (preferencia) {
             case "Adolescente" -> ADOLESCENTE;
             case "Adulto" -> ADULTO;

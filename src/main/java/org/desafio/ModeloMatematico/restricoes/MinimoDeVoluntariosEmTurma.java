@@ -1,2 +1,4 @@
-package org.desafio.ModeloMatematico.restricoes;public class MinimoDeVoluntariosEmTurma {
+package org.desafio.ModeloMatematico.restricoes;
+
+public class MinimoDeVoluntariosEmTurma {
 }

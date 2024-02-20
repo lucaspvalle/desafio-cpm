@@ -1,4 +1,4 @@
 package org.desafio.ModeloMatematico.restricoes;
 
-public class MinimoDeVoluntariosEmTurma {
+public class MaximoDeVoluntariosEmTurma {
 }

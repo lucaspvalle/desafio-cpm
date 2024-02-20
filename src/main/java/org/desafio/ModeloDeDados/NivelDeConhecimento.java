@@ -1,2 +1,27 @@
-package org.desafio.ModeloDeDados;public enum NivelDeConhecimento {
+package org.desafio.ModeloDeDados;
+
+public class NivelDeConhecimento {
+    String nome;
+    String equivalente;
+
+    public NivelDeConhecimento(String[] line) {
+        this.nome = line[0];
+
+    }
+
+    private String getNivel() {
+        if (this.nome.contains("Teens")) {
+            return this.equivalente;
+        }
+        return this.nome;
+    }
+
+    public int getValor() {
+        return this.getNivel().charAt(0);
+    }
+
+    @Override
+    public String toString() {
+        return "Nivel " + nome;
+    }
 }
