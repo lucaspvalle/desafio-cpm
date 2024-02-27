@@ -9,10 +9,10 @@ import org.desafio.ModeloDeDados.enums.PreferenciaDePeriodo;
 import org.desafio.ModeloDeDados.enums.PreferenciaDeProgressaoDeTurma;
 
 public class AlocacaoDeVoluntarioNaTurma {
-    Voluntario voluntario;
-    Turma turma;
-    Boolean dominio;
-    MPVariable variavel;
+    public Voluntario voluntario;
+    public Turma turma;
+    public Boolean dominio;
+    public MPVariable variavel;
 
     private boolean voluntarioTemNivelParaTurma() {
         return (turma.getNivel().getValor() >= voluntario.getNivel().getValor());
@@ -49,6 +49,7 @@ public class AlocacaoDeVoluntarioNaTurma {
         this.voluntario = voluntario;
         this.turma = turma;
 
+        //TODO: verificar se voluntário na mesma escala tb tem preferência pela turma
         this.dominio = (
                 //voluntarioTemNivelParaTurma()
                 voluntarioTemPreferenciaPeloPeriodoDaTurma()
