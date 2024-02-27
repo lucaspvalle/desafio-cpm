@@ -6,11 +6,10 @@ public class NivelDeConhecimento {
 
     public NivelDeConhecimento(String[] line) {
         this.nome = line[0];
-
     }
 
     private String getNivel() {
-        if (this.nome.contains("Teens")) {
+        if (!this.equivalente.isEmpty()) {
             return this.equivalente;
         }
         return this.nome;

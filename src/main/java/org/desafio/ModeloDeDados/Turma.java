@@ -37,13 +37,12 @@ public class Turma {
         return turmaSeguinte;
     }
 
-    public Turma setTurmaSeguinte(Turma turmaSeguinte) {
+    public void setTurmaSeguinte(Turma turmaSeguinte) {
         this.turmaSeguinte = turmaSeguinte;
-        return this;
     }
 
     @Override
     public String toString() {
-        return nome;
+        return "turma_" + nome;
     }
 }

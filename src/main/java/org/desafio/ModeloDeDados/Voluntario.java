@@ -63,12 +63,17 @@ public class Voluntario {
         return voluntariosNaMesmaEscala;
     }
 
-    public void setVoluntariosNaMesmaEscala(List<Voluntario> voluntariosNaMesmaEscala) {
-        this.voluntariosNaMesmaEscala = voluntariosNaMesmaEscala;
+    public void setVoluntariosNaMesmaEscala(Voluntario voluntariosNaMesmaEscala) {
+        this.voluntariosNaMesmaEscala.add(voluntariosNaMesmaEscala);
     }
 
     public Voluntario addVoluntariosNaMesmaEscala(Voluntario voluntario) {
         this.voluntariosNaMesmaEscala.add(voluntario);
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "vol_" + id;
     }
 }
