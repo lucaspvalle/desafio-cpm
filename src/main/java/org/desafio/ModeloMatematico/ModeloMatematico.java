@@ -3,7 +3,6 @@ package org.desafio.ModeloMatematico;
 import com.google.ortools.Loader;
 import com.google.ortools.linearsolver.MPObjective;
 import com.google.ortools.linearsolver.MPSolver;
-
 import org.desafio.ModeloDeDados.Turma;
 import org.desafio.ModeloDeDados.Voluntario;
 import org.desafio.ModeloDeDados.dao.TurmaDao;
@@ -40,14 +39,12 @@ public class ModeloMatematico {
 
     private void imprimirStatusDoModelo() {
         if (this.resultStatus == MPSolver.ResultStatus.OPTIMAL) {
-            System.out.println("Solution:");
-            System.out.println("Objective value = " + this.objective.value());
-            //System.out.println("x = " + x.solutionValue());
+            System.out.println("Valor da função objetivo: " + this.objective.value());
         } else {
-            System.err.println("The problem does not have an optimal solution!");
+            System.err.println("Não há solução ótima!");
         }
 
-        System.out.println("Problem solved in " + this.solver.wallTime() + " milliseconds");
+        System.out.println("Problema resolvido em " + this.solver.wallTime() + " [ms]");
     }
 
     private void construirVariaveis() {
@@ -65,6 +62,8 @@ public class ModeloMatematico {
     }
 
     public ModeloMatematico(VoluntarioDao voluntarios, TurmaDao turmas) {
+        System.out.println("Iniciando modelo!");
+
         this.voluntarios = voluntarios;
         this.turmas = turmas;
 
@@ -79,5 +78,7 @@ public class ModeloMatematico {
 
         imprimirStatusDoModelo();
         imprimirModelo();
+
+        System.out.println("Finalizando modelo!");
     }
 }
