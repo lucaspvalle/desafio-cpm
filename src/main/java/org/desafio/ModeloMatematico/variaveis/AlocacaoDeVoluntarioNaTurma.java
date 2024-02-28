@@ -2,8 +2,8 @@ package org.desafio.ModeloMatematico.variaveis;
 
 import com.google.ortools.linearsolver.MPSolver;
 import com.google.ortools.linearsolver.MPVariable;
-
-import org.desafio.ModeloDeDados.*;
+import org.desafio.ModeloDeDados.Turma;
+import org.desafio.ModeloDeDados.Voluntario;
 import org.desafio.ModeloDeDados.enums.PreferenciaDeFaixaEtaria;
 import org.desafio.ModeloDeDados.enums.PreferenciaDePeriodo;
 import org.desafio.ModeloDeDados.enums.PreferenciaDeProgressaoDeTurma;
@@ -51,8 +51,8 @@ public class AlocacaoDeVoluntarioNaTurma {
 
         //TODO: verificar se voluntário na mesma escala tb tem preferência pela turma
         this.dominio = (
-                //voluntarioTemNivelParaTurma()
-                voluntarioTemPreferenciaPeloPeriodoDaTurma()
+                voluntarioTemNivelParaTurma()
+                & voluntarioTemPreferenciaPeloPeriodoDaTurma()
                 & voluntarioTemPreferenciaPelaFaixaEtariaDaTurma()
                 & voluntarioTemPreferenciaDeTurma());
 

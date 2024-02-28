@@ -2,6 +2,9 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/main/java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/dao/TurmaDao.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/dao/VoluntarioDao.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/desafio/integracao/ImportacaoDeDados.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="windows-1252" />
     <file url="PROJECT" charset="windows-1252" />
   </component>

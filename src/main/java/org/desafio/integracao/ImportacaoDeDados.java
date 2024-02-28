@@ -11,6 +11,9 @@ import java.util.Objects;
 
 public class ImportacaoDeDados {
 
+    public TurmaDao turmas;
+    public VoluntarioDao voluntarios;
+
     private String getResourceFilePath(String nome) {
         return Objects.requireNonNull(getClass().getClassLoader().getResource(nome)).getPath();
     }
@@ -38,17 +41,27 @@ public class ImportacaoDeDados {
         return lines;
     }
 
-    public TurmaDao importarTurmas() {
+    private void importarTurmas() {
         ArrayList<String> csvTurmas = importarGenerico("data/tb_tur_cadastro.csv");
         ArrayList<String> csvProgressaoDeTurmas = importarGenerico("data/tb_tur_progressao.csv");
+        ArrayList<String> csvEquivalencias = importarGenerico("data/tb_dm_equivalencia.csv");
 
-        return new TurmaDao(csvTurmas, csvProgressaoDeTurmas);
+        this.turmas = new TurmaDao(csvTurmas, csvProgressaoDeTurmas, csvEquivalencias);
     }
 
-    public VoluntarioDao importarVoluntarios(TurmaDao turmas) {
+    private void importarVoluntarios() {
         ArrayList<String> csvVoluntarios = importarGenerico("data/tb_vol_cadastro_editado.csv");
         ArrayList<String> csvVoluntariosEmEscala = importarGenerico("data/tb_vol_mesmaescala.csv");
 
-        return new VoluntarioDao(turmas, csvVoluntarios, csvVoluntariosEmEscala);
+        this.voluntarios = new VoluntarioDao(this.turmas, csvVoluntarios, csvVoluntariosEmEscala);
+    }
+
+    public ImportacaoDeDados() {
+        System.out.println("Iniciando importação!");
+
+        importarTurmas();
+        importarVoluntarios();
+
+        System.out.println("Finalizando importação!");
     }
 }

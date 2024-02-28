@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c77c7d55-f7c5-4b66-8686-35d0155737aa" name="Changes" comment="refactor: separando conceitos de integração para arquivos específicos">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/ModeloMatematico.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/dao/AlocacaoDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/PermiteApenasUmaAlocacaoDoVoluntario.java" afterDir="false" />
+    <list default="true" id="c77c7d55-f7c5-4b66-8686-35d0155737aa" name="Changes" comment="feat: adiciona leitura de turmas equivalentes">
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/Main.java" afterDir="false" />
@@ -16,13 +13,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/Voluntario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/Voluntario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/dao/TurmaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/dao/TurmaDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/dao/VoluntarioDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/dao/VoluntarioDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/ModeloMatematico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/ModeloMatematico.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/AlocacaoDeVoluntariosEmMesmaEscala.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/AlocacaoDeVoluntariosEmMesmaEscala.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/MaximoDeVoluntariosEmTurma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/QuantidadeDeVoluntariosEmTurma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/MinimoDeVoluntariosEmTurma.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/QuantidadeDeVoluntariosEmTurma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/QuantidadeDeVoluntariosEmTurma.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/AlocacaoDeVoluntarioNaTurma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/AlocacaoDeVoluntarioNaTurma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FolgaMaximaDeVoluntariosEmTurma.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FolgaMinimaDeVoluntariosEmTurma.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FuncaoObjetivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FuncaoObjetivo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/integracao/ImportacaoDeDados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/integracao/ImportacaoDeDados.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,16 +67,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "onboarding.tips.debug.path": "C:/Users/LucasPerini/IdeaProjects/desafio-cpm/src/main/java/org/desafio/Main.java",
-    "settings.editor.selected.configurable": "preferences.fileTypes"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/LucasPerini/IdeaProjects/desafio-cpm/src/main/java/org/desafio/Main.java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.desafio.ModeloMatematico.restricoes" />
@@ -125,7 +119,23 @@
       <option name="project" value="LOCAL" />
       <updated>1708455022085</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="refactor: separando conceitos de integração para arquivos específicos">
+      <option name="closed" value="true" />
+      <created>1709062466254</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1709062466254</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: adiciona parte inicial de modelo matemático">
+      <option name="closed" value="true" />
+      <created>1709062554354</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1709062554354</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -147,11 +157,14 @@
     <MESSAGE value="Initial commit - código" />
     <MESSAGE value="test: adicionando conjunto de testes para o modelo" />
     <MESSAGE value="refactor: separando conceitos de integração para arquivos específicos" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: separando conceitos de integração para arquivos específicos" />
+    <MESSAGE value="feat: adiciona parte inicial de modelo matemático" />
+    <MESSAGE value="feat: adiciona leitura de turmas equivalentes" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: adiciona leitura de turmas equivalentes" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="org.desafio.ModeloMatematico.ModeloMatematico" memberName="turmas" />
         <PinnedItemInfo parentTag="org.desafio.importacao.CustomMappingStrategy" memberName="type" />
       </pinned-members>
     </pin-to-top-manager>

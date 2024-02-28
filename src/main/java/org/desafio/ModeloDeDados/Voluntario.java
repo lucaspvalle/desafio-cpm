@@ -15,7 +15,7 @@ public class Voluntario {
     //String funcao;
     int anoDeInicio;
     Turma turma;
-    Double comprometimento;
+    //Double comprometimento;
     NivelDeConhecimento nivel;
     PreferenciaDePeriodo periodo;
     PreferenciaDeProgressaoDeTurma progressao;
@@ -29,7 +29,7 @@ public class Voluntario {
         this.anoDeInicio = Integer.parseInt(line[3].split(",")[0]);
         this.turma = turmaDao.getTurmaPorId(line[4]);
         //this.comprometimento = Double.parseDouble(line[5]);
-        //this.nivel = NivelDeConhecimento.
+        this.nivel = new NivelDeConhecimento(line[6]);
         this.periodo = PreferenciaDePeriodo.getPreferencia(line[7]);
         this.progressao = PreferenciaDeProgressaoDeTurma.getPreferencia(line[8]);
         this.faixaEtaria = PreferenciaDeFaixaEtaria.getPreferencia(line[9]);
@@ -59,17 +59,12 @@ public class Voluntario {
         return nivel;
     }
 
-    public List<Voluntario> getVoluntariosNaMesmaEscala() {
-        return voluntariosNaMesmaEscala;
-    }
+//    public List<Voluntario> getVoluntariosNaMesmaEscala() {
+//        return voluntariosNaMesmaEscala;
+//    }
 
     public void setVoluntariosNaMesmaEscala(Voluntario voluntariosNaMesmaEscala) {
         this.voluntariosNaMesmaEscala.add(voluntariosNaMesmaEscala);
-    }
-
-    public Voluntario addVoluntariosNaMesmaEscala(Voluntario voluntario) {
-        this.voluntariosNaMesmaEscala.add(voluntario);
-        return this;
     }
 
     @Override
