@@ -8,28 +8,26 @@ import org.desafio.ModeloDeDados.dao.VoluntarioDao;
 import org.desafio.ModeloMatematico.variaveis.AlocacaoDeVoluntarioNaTurma;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class AlocacaoDao {
     ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoes = new ArrayList<>();
 
-    //TODO: melhorar funções para reduzir código duplicado
-    public ArrayList<AlocacaoDeVoluntarioNaTurma> getPossiveisAlocacoesDeUmaTurma(Turma turma) {
-        return (ArrayList<AlocacaoDeVoluntarioNaTurma>)
-                this.alocacoes.stream().filter(
-                        a -> (a.turma.equals(turma) & a.dominio)
-                ).collect(Collectors.toList());
+    private ArrayList<AlocacaoDeVoluntarioNaTurma> filtrarAlocacoes(Predicate<AlocacaoDeVoluntarioNaTurma> predicate) {
+        return (ArrayList<AlocacaoDeVoluntarioNaTurma>) this.alocacoes.stream().filter(predicate).collect(Collectors.toList());
     }
 
-    public ArrayList<AlocacaoDeVoluntarioNaTurma> getPossiveisAlocacoesDeUmVoluntario(Voluntario voluntario) {
-        return (ArrayList<AlocacaoDeVoluntarioNaTurma>)
-                this.alocacoes.stream().filter(
-                        a -> (a.voluntario.equals(voluntario) & a.dominio)
-                ).collect(Collectors.toList());
+    public ArrayList<AlocacaoDeVoluntarioNaTurma> getPossiveisAlocacoesDeUmaTurma(Turma turmaFiltrada) {
+        return filtrarAlocacoes(alocacao -> (alocacao.turma.equals(turmaFiltrada)) & alocacao.dominio);
     }
 
-    public ArrayList<AlocacaoDeVoluntarioNaTurma> getAllAlocacoes() {
-        return alocacoes;
+    public ArrayList<AlocacaoDeVoluntarioNaTurma> getPossiveisAlocacoesDeUmVoluntario(Voluntario voluntarioFiltrado) {
+        return filtrarAlocacoes(alocacao -> (alocacao.voluntario.equals(voluntarioFiltrado)) & alocacao.dominio);
+    }
+
+    public ArrayList<AlocacaoDeVoluntarioNaTurma> getAllAlocacoesComDominio() {
+        return filtrarAlocacoes(alocacao -> (alocacao.dominio));
     }
 
     public AlocacaoDao(MPSolver solver, VoluntarioDao voluntarios, TurmaDao turmas) {

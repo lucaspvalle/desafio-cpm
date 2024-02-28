@@ -15,7 +15,7 @@ public class FuncaoObjetivo {
     public FuncaoObjetivo(MPSolver solver, AlocacaoDao alocacoes) {
 
         this.objective = solver.objective();
-        for (AlocacaoDeVoluntarioNaTurma alocacao : alocacoes.getAllAlocacoes()) {
+        for (AlocacaoDeVoluntarioNaTurma alocacao : alocacoes.getAllAlocacoesComDominio()) {
             objective.setCoefficient(alocacao.variavel, 1);
         }
         objective.setMaximization();
