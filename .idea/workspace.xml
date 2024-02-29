@@ -4,20 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c77c7d55-f7c5-4b66-8686-35d0155737aa" name="Changes" comment="feat: adiciona leitura de turmas equivalentes">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="c77c7d55-f7c5-4b66-8686-35d0155737aa" name="Changes" comment="refactor: melhora construção de métodos duplicados">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/NivelDeConhecimento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/NivelDeConhecimento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/Turma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/Turma.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/Voluntario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/Voluntario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/dao/TurmaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/dao/TurmaDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/dao/VoluntarioDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/dao/VoluntarioDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/ModeloMatematico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/ModeloMatematico.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/AlocacaoDeVoluntariosEmMesmaEscala.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/AlocacaoDeVoluntariosEmMesmaEscala.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/QuantidadeDeVoluntariosEmTurma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/QuantidadeDeVoluntariosEmTurma.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/AlocacaoDeVoluntarioNaTurma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/AlocacaoDeVoluntarioNaTurma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/integracao/ImportacaoDeDados.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/integracao/ImportacaoDeDados.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +129,31 @@
       <option name="project" value="LOCAL" />
       <updated>1709062554354</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat: adiciona leitura de turmas equivalentes">
+      <option name="closed" value="true" />
+      <created>1709129149162</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1709129149162</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: adiciona variável de folga em restrição de qtdade de voluntários em turma&#10;refactor: adiciona mais logs">
+      <option name="closed" value="true" />
+      <created>1709129190390</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1709129190390</updated>
+    </task>
+    <task id="LOCAL-00007" summary="refactor: melhora construção de métodos duplicados">
+      <option name="closed" value="true" />
+      <created>1709137585446</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1709137585446</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -159,7 +177,9 @@
     <MESSAGE value="refactor: separando conceitos de integração para arquivos específicos" />
     <MESSAGE value="feat: adiciona parte inicial de modelo matemático" />
     <MESSAGE value="feat: adiciona leitura de turmas equivalentes" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: adiciona leitura de turmas equivalentes" />
+    <MESSAGE value="feat: adiciona variável de folga em restrição de qtdade de voluntários em turma&#10;refactor: adiciona mais logs" />
+    <MESSAGE value="refactor: melhora construção de métodos duplicados" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: melhora construção de métodos duplicados" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

@@ -15,41 +15,54 @@ public class AlocacaoDeVoluntarioNaTurma {
     public MPVariable variavel;
 
     private boolean voluntarioTemNivelParaTurma() {
-        return (turma.getNivel().getValor() >= voluntario.getNivel().getValor());
+        return (this.voluntario.getNivel().getValor() >= this.turma.getNivel().getValor());
     }
 
     private boolean voluntarioTemPreferenciaPelaFaixaEtariaDaTurma() {
-        return (voluntario.getFaixaEtaria() == PreferenciaDeFaixaEtaria.FAIXA_INDIFERENTE)
-                | (voluntario.getFaixaEtaria() == turma.getFaixaEtaria());
+        return (this.voluntario.getFaixaEtaria() == PreferenciaDeFaixaEtaria.FAIXA_INDIFERENTE)
+                | (this.voluntario.getFaixaEtaria() == this.turma.getFaixaEtaria());
+    }
+
+    private boolean voluntarioNaoTemPreferenciaPeloPeriodoDaTurma(Voluntario voluntarioEmAnalise) {
+        return !((voluntarioEmAnalise.getPeriodo() == PreferenciaDePeriodo.PERIODO_INDIFERENTE)
+                | (voluntarioEmAnalise.getPeriodo() == this.turma.getPeriodo()));
     }
 
     private boolean voluntarioTemPreferenciaPeloPeriodoDaTurma() {
-        return (voluntario.getPeriodo() == PreferenciaDePeriodo.PERIODO_INDIFERENTE)
-                | (voluntario.getPeriodo() == turma.getPeriodo());
+        if (voluntarioNaoTemPreferenciaPeloPeriodoDaTurma(this.voluntario)) {
+            return false;
+        }
+
+        for (Voluntario voluntarioNaMesmaEscala : this.voluntario.getVoluntariosNaMesmaEscala()) {
+            if (voluntarioNaoTemPreferenciaPeloPeriodoDaTurma(voluntarioNaMesmaEscala)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private boolean voluntarioTemPreferenciaDeTurma() {
-        if ((voluntario.getProgressao() == PreferenciaDeProgressaoDeTurma.PROGRESSAO_INDIFERENTE)) {
+        if ((this.voluntario.getProgressao() == PreferenciaDeProgressaoDeTurma.PROGRESSAO_INDIFERENTE)) {
             return true;
         }
 
-        Turma turmaAtualDoVoluntario = voluntario.getTurma();
+        Turma turmaAtualDoVoluntario = this.voluntario.getTurmaAtual();
         Turma turmaSeguinteDoVoluntario;
 
-        if (voluntario.getProgressao() == PreferenciaDeProgressaoDeTurma.ACOMPANHAR) {
+        if (this.voluntario.getProgressao() == PreferenciaDeProgressaoDeTurma.ACOMPANHAR) {
             turmaSeguinteDoVoluntario = turmaAtualDoVoluntario.getTurmaSeguinte();
-        } else {
+        } else { //PreferenciaDeProgressaoDeTurma.PERMANECER
             turmaSeguinteDoVoluntario = turmaAtualDoVoluntario;
         }
 
-        return (turma == turmaSeguinteDoVoluntario);
+        return (this.turma == turmaSeguinteDoVoluntario);
     }
 
     public AlocacaoDeVoluntarioNaTurma(MPSolver solver, Voluntario voluntario, Turma turma) {
         this.voluntario = voluntario;
         this.turma = turma;
 
-        //TODO: verificar se voluntário na mesma escala tb tem preferência pela turma
         this.dominio = (
                 voluntarioTemNivelParaTurma()
                 & voluntarioTemPreferenciaPeloPeriodoDaTurma()

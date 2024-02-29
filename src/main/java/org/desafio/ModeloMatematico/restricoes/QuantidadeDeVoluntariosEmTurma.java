@@ -21,13 +21,13 @@ public class QuantidadeDeVoluntariosEmTurma {
         MPConstraint cNumeroMaximo = solver.makeConstraint(-inf, numeroMaximoDeVoluntarios,"c_NumeroMaximo{" + turma + "}");
         MPConstraint cNumeroMinimo = solver.makeConstraint(numeroMinimoDeVoluntarios, inf, "c_NumeroMinimo{" + turma + "}");
 
-        MPVariable variavelDeFolgaMaxima = solver.makeNumVar(0, numeroMaximoDeVoluntarios, "v_FolgaDeNumeroMaximo{" + turma + "}");
-        MPVariable variavelDeFolgaMinima = solver.makeNumVar(0, numeroMinimoDeVoluntarios, "v_FolgaDeNumeroMinimo{" + turma + "}");
-
         for (AlocacaoDeVoluntarioNaTurma alocacao : alocacoesNaTurma) {
             cNumeroMaximo.setCoefficient(alocacao.variavel, 1);
             cNumeroMinimo.setCoefficient(alocacao.variavel, 1);
         }
+
+        MPVariable variavelDeFolgaMaxima = solver.makeNumVar(0, numeroMaximoDeVoluntarios, "v_FolgaDeNumeroMaximo{" + turma + "}");
+        MPVariable variavelDeFolgaMinima = solver.makeNumVar(0, numeroMinimoDeVoluntarios, "v_FolgaDeNumeroMinimo{" + turma + "}");
 
         cNumeroMaximo.setCoefficient(variavelDeFolgaMaxima, -1);
         cNumeroMinimo.setCoefficient(variavelDeFolgaMinima, 1);

@@ -7,7 +7,6 @@ import org.desafio.ModeloDeDados.enums.PreferenciaDePeriodo;
 import org.desafio.ModeloDeDados.enums.PreferenciaDeProgressaoDeTurma;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Voluntario {
     int id;
@@ -20,7 +19,7 @@ public class Voluntario {
     PreferenciaDePeriodo periodo;
     PreferenciaDeProgressaoDeTurma progressao;
     PreferenciaDeFaixaEtaria faixaEtaria;
-    List<Voluntario> voluntariosNaMesmaEscala = new ArrayList<>();
+    ArrayList<Voluntario> voluntariosNaMesmaEscala = new ArrayList<>();
 
     public Voluntario(String[] line, TurmaDao turmaDao) {
         this.id = Integer.parseInt(line[0]);
@@ -39,7 +38,7 @@ public class Voluntario {
         return id;
     }
 
-    public Turma getTurma() {
+    public Turma getTurmaAtual() {
         return turma;
     }
 
@@ -59,9 +58,9 @@ public class Voluntario {
         return nivel;
     }
 
-//    public List<Voluntario> getVoluntariosNaMesmaEscala() {
-//        return voluntariosNaMesmaEscala;
-//    }
+    public ArrayList<Voluntario> getVoluntariosNaMesmaEscala() {
+        return voluntariosNaMesmaEscala;
+    }
 
     public void setVoluntariosNaMesmaEscala(Voluntario voluntariosNaMesmaEscala) {
         this.voluntariosNaMesmaEscala.add(voluntariosNaMesmaEscala);
@@ -69,6 +68,6 @@ public class Voluntario {
 
     @Override
     public String toString() {
-        return "vol_" + id;
+        return "Vol. " + id;
     }
 }

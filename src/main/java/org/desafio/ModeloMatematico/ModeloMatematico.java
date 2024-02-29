@@ -10,8 +10,12 @@ import org.desafio.ModeloDeDados.dao.VoluntarioDao;
 import org.desafio.ModeloMatematico.dao.AlocacaoDao;
 import org.desafio.ModeloMatematico.restricoes.PermiteApenasUmaAlocacaoDoVoluntario;
 import org.desafio.ModeloMatematico.restricoes.QuantidadeDeVoluntariosEmTurma;
+import org.desafio.ModeloMatematico.variaveis.AlocacaoDeVoluntarioNaTurma;
 import org.desafio.ModeloMatematico.variaveis.FuncaoObjetivo;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -47,6 +51,27 @@ public class ModeloMatematico {
         System.out.println("Problema resolvido em " + this.solver.wallTime() + " [ms]");
     }
 
+    private void salvarSolucaoEmCsv() {
+        try {
+            File file = new File("solucao.csv");
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            bw.write("Voluntário;Turma;Alocação");
+            bw.newLine();
+
+            for (AlocacaoDeVoluntarioNaTurma alocacao : alocacoes.getAllAlocacoesComDominio()) {
+                bw.write(alocacao.voluntario.getId() + ";" + alocacao.turma.getNome() + ";" + (int)alocacao.variavel.solutionValue());
+                bw.newLine();
+            }
+
+            bw.close();
+            fw.close();
+        } catch (IOException e) {
+            System.out.println("Problema ao salvar a solução em CSV!");
+        }
+    }
+
     private void construirVariaveis() {
         this.alocacoes = new AlocacaoDao(this.solver, this.voluntarios, this.turmas);
     }
@@ -78,6 +103,7 @@ public class ModeloMatematico {
 
         imprimirStatusDoModelo();
         imprimirModelo();
+        salvarSolucaoEmCsv();
 
         System.out.println("Finalizando modelo!");
     }

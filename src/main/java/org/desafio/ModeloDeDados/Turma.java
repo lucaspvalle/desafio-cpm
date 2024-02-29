@@ -45,6 +45,6 @@ public class Turma {
 
     @Override
     public String toString() {
-        return "turma_" + nome;
+        return "Turma " + nome;
     }
 }
