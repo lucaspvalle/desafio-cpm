@@ -5,6 +5,7 @@ import org.desafio.ModeloDeDados.Turma;
 import org.desafio.ModeloDeDados.Voluntario;
 import org.desafio.ModeloDeDados.dao.TurmaDao;
 import org.desafio.ModeloDeDados.dao.VoluntarioDao;
+import org.desafio.ModeloDeDados.enums.PreferenciaDePeriodo;
 import org.desafio.ModeloMatematico.variaveis.AlocacaoDeVoluntarioNaTurma;
 
 import java.util.ArrayList;
@@ -24,6 +25,15 @@ public class AlocacaoDao {
 
     public ArrayList<AlocacaoDeVoluntarioNaTurma> getPossiveisAlocacoesDeUmVoluntario(Voluntario voluntarioFiltrado) {
         return filtrarAlocacoes(alocacao -> (alocacao.voluntario.equals(voluntarioFiltrado)) & alocacao.dominio);
+    }
+
+    public ArrayList<AlocacaoDeVoluntarioNaTurma> getPossiveisAlocacoesDeUmVoluntarioEmUmPeriodo(
+            Voluntario voluntarioFiltrado,
+            PreferenciaDePeriodo periodoFiltrado) {
+        return filtrarAlocacoes(alocacao ->
+                (alocacao.voluntario.equals(voluntarioFiltrado))
+                        & alocacao.turma.getPeriodo().equals(periodoFiltrado)
+                        & alocacao.dominio);
     }
 
     public ArrayList<AlocacaoDeVoluntarioNaTurma> getAllAlocacoesComDominio() {

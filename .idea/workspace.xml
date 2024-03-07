@@ -4,14 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c77c7d55-f7c5-4b66-8686-35d0155737aa" name="Changes" comment="refactor: melhora construção de métodos duplicados">
+    <list default="true" id="c77c7d55-f7c5-4b66-8686-35d0155737aa" name="Changes" comment="fix: corrige bug em cálculo de domínio de nível de voluntário (deve ser maior do que o nível da turma)&#10;feat:&#10;- filtra domínio de período para considerar a preferência de período do voluntário na mesma escala&#10;- exporta solução em csv">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/ProporcaoDeExperienciaEmTurmas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/ProporcaoDeGeneroEmTurmas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/Turma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/Turma.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/Voluntario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/Voluntario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/dao/VoluntarioDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/dao/VoluntarioDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/enums/PreferenciaDePeriodo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/enums/PreferenciaDePeriodo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/ModeloMatematico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/ModeloMatematico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/dao/AlocacaoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/dao/AlocacaoDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/AlocacaoDeVoluntariosEmMesmaEscala.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/AlocacaoDeVoluntariosEmMesmaEscala.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/QuantidadeDeVoluntariosEmTurma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/QuantidadeDeVoluntariosEmTurma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/PermiteApenasUmaAlocacaoDoVoluntario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/PermiteApenasUmaAlocacaoDoVoluntario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/AlocacaoDeVoluntarioNaTurma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/AlocacaoDeVoluntarioNaTurma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FuncaoObjetivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FuncaoObjetivo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +53,9 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -68,7 +77,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/LucasPerini/IdeaProjects/desafio-cpm/src/main/java/org/desafio/Main.java&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -153,7 +162,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709137585446</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fix: corrige bug em cálculo de domínio de nível de voluntário (deve ser maior do que o nível da turma)&#10;feat:&#10;- filtra domínio de período para considerar a preferência de período do voluntário na mesma escala&#10;- exporta solução em csv">
+      <option name="closed" value="true" />
+      <created>1709225470589</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1709225470589</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -161,6 +178,21 @@
     <option featureType="dependencySupport" implementationName="java:com.google.protobuf:protobuf-java" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -172,6 +204,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Initial commit - código" />
     <MESSAGE value="test: adicionando conjunto de testes para o modelo" />
     <MESSAGE value="refactor: separando conceitos de integração para arquivos específicos" />
@@ -179,7 +212,9 @@
     <MESSAGE value="feat: adiciona leitura de turmas equivalentes" />
     <MESSAGE value="feat: adiciona variável de folga em restrição de qtdade de voluntários em turma&#10;refactor: adiciona mais logs" />
     <MESSAGE value="refactor: melhora construção de métodos duplicados" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: melhora construção de métodos duplicados" />
+    <MESSAGE value="fix: corrige bug em cálculo de domínio de nível de voluntário (deve ser maior do que o nível da turma)&#10;feat:&#10;- filtra domínio de período para considerar a preferência de período do voluntário na mesma escala&#10;- exporta solução em csv" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: corrige bug em cálculo de domínio de nível de voluntário (deve ser maior do que o nível da turma)&#10;feat:&#10;- filtra domínio de período para considerar a preferência de período do voluntário na mesma escala&#10;- exporta solução em csv" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

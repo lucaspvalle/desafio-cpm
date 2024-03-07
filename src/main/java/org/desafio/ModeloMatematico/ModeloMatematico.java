@@ -7,7 +7,9 @@ import org.desafio.ModeloDeDados.Turma;
 import org.desafio.ModeloDeDados.Voluntario;
 import org.desafio.ModeloDeDados.dao.TurmaDao;
 import org.desafio.ModeloDeDados.dao.VoluntarioDao;
+import org.desafio.ModeloDeDados.enums.PreferenciaDePeriodo;
 import org.desafio.ModeloMatematico.dao.AlocacaoDao;
+import org.desafio.ModeloMatematico.restricoes.AlocacaoDeVoluntariosEmMesmaEscala;
 import org.desafio.ModeloMatematico.restricoes.PermiteApenasUmaAlocacaoDoVoluntario;
 import org.desafio.ModeloMatematico.restricoes.QuantidadeDeVoluntariosEmTurma;
 import org.desafio.ModeloMatematico.variaveis.AlocacaoDeVoluntarioNaTurma;
@@ -83,6 +85,19 @@ public class ModeloMatematico {
 
         for (Voluntario voluntario : voluntarios.getAllVoluntarios()) {
             new PermiteApenasUmaAlocacaoDoVoluntario(solver, voluntario, alocacoes.getPossiveisAlocacoesDeUmVoluntario(voluntario));
+
+            for (Voluntario voluntarioNaEscala : voluntario.getVoluntariosNaMesmaEscala()) {
+                for (PreferenciaDePeriodo periodo : PreferenciaDePeriodo.getPeriodosValidos()) {
+                    new AlocacaoDeVoluntariosEmMesmaEscala(
+                            solver,
+                            voluntario,
+                            voluntarioNaEscala,
+                            periodo,
+                            alocacoes.getPossiveisAlocacoesDeUmVoluntarioEmUmPeriodo(voluntario, periodo),
+                            alocacoes.getPossiveisAlocacoesDeUmVoluntarioEmUmPeriodo(voluntarioNaEscala, periodo)
+                    );
+                }
+            }
         }
     }
 

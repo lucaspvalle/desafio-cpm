@@ -13,8 +13,8 @@ public class VoluntarioDao {
                 () -> new RuntimeException("Voluntário não cadastrado: " + id));
     }
 
-    public Voluntario getVoluntarioPorId(String id) {
-        return getVoluntarioPorId(Integer.parseInt(id));
+    public ArrayList<Voluntario> getAllVoluntarios() {
+        return voluntarios;
     }
 
     private void updateEscalaDeVoluntario(Voluntario voluntario, Voluntario voluntarioNaMesmaEscala) {
@@ -22,10 +22,6 @@ public class VoluntarioDao {
                 v -> voluntario.getId().equals(v.getId())).findFirst();
 
         voluntarioDentroDoDao.ifPresent(vol -> vol.setVoluntariosNaMesmaEscala(voluntarioNaMesmaEscala));
-    }
-
-    public ArrayList<Voluntario> getAllVoluntarios() {
-        return voluntarios;
     }
 
     public VoluntarioDao(TurmaDao turmas, ArrayList<String> csvVoluntarios, ArrayList<String> csvVoluntariosEmEscala) {
@@ -40,8 +36,8 @@ public class VoluntarioDao {
             String[] linhasSeparadas = line.split(",");
 
             try {
-                Voluntario voluntario = getVoluntarioPorId(linhasSeparadas[0]);
-                Voluntario voluntarioNaMesmaEscala = getVoluntarioPorId(linhasSeparadas[1]);
+                Voluntario voluntario = getVoluntarioPorId(Integer.valueOf(linhasSeparadas[0]));
+                Voluntario voluntarioNaMesmaEscala = getVoluntarioPorId(Integer.valueOf(linhasSeparadas[1]));
 
                 updateEscalaDeVoluntario(voluntario, voluntarioNaMesmaEscala);
             } catch (RuntimeException e) {

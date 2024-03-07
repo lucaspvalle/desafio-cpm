@@ -23,23 +23,9 @@ public class AlocacaoDeVoluntarioNaTurma {
                 | (this.voluntario.getFaixaEtaria() == this.turma.getFaixaEtaria());
     }
 
-    private boolean voluntarioNaoTemPreferenciaPeloPeriodoDaTurma(Voluntario voluntarioEmAnalise) {
-        return !((voluntarioEmAnalise.getPeriodo() == PreferenciaDePeriodo.PERIODO_INDIFERENTE)
-                | (voluntarioEmAnalise.getPeriodo() == this.turma.getPeriodo()));
-    }
-
     private boolean voluntarioTemPreferenciaPeloPeriodoDaTurma() {
-        if (voluntarioNaoTemPreferenciaPeloPeriodoDaTurma(this.voluntario)) {
-            return false;
-        }
-
-        for (Voluntario voluntarioNaMesmaEscala : this.voluntario.getVoluntariosNaMesmaEscala()) {
-            if (voluntarioNaoTemPreferenciaPeloPeriodoDaTurma(voluntarioNaMesmaEscala)) {
-                return false;
-            }
-        }
-
-        return true;
+        return (this.voluntario.getPeriodo() == PreferenciaDePeriodo.PERIODO_INDIFERENTE)
+                | (this.voluntario.getPeriodo() == this.turma.getPeriodo());
     }
 
     private boolean voluntarioTemPreferenciaDeTurma() {
@@ -73,11 +59,15 @@ public class AlocacaoDeVoluntarioNaTurma {
             return;
         }
 
-        this.variavel = solver.makeBoolVar(
-                "v_alocacao{" +
-                        this.voluntario.toString() +
-                        ", " +
-                        this.turma.toString() +
-                        "}");
+        this.variavel = solver.makeBoolVar(toString());
+    }
+
+    @Override
+    public String toString() {
+        return "v_AlocacaoDeVoluntarioNaTurma{" +
+                voluntario.toString() +
+                ", "
+                + turma.toString() +
+                "}";
     }
 }
