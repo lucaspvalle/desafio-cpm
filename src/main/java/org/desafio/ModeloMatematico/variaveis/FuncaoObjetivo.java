@@ -16,7 +16,7 @@ public class FuncaoObjetivo {
 
         this.objective = solver.objective();
         for (AlocacaoDeVoluntarioNaTurma alocacao : alocacoes.getAllAlocacoesComDominio()) {
-            objective.setCoefficient(alocacao.variavel, 1);
+            objective.setCoefficient(alocacao.variavel, alocacao.voluntario.getComprometimento());
         }
         objective.setMaximization();
     }
