@@ -7,21 +7,13 @@ import org.desafio.ModeloDeDados.Turma;
 import org.desafio.ModeloDeDados.Voluntario;
 import org.desafio.ModeloDeDados.dao.TurmaDao;
 import org.desafio.ModeloDeDados.dao.VoluntarioDao;
-import org.desafio.ModeloDeDados.enums.PreferenciaDePeriodo;
 import org.desafio.ModeloMatematico.dao.AlocacaoDao;
-import org.desafio.ModeloMatematico.restricoes.AlocacaoDeVoluntariosEmMesmaEscala;
-import org.desafio.ModeloMatematico.restricoes.PermiteApenasUmaAlocacaoDoVoluntario;
-import org.desafio.ModeloMatematico.restricoes.QuantidadeDeVoluntariosEmTurma;
+import org.desafio.ModeloMatematico.restricoes.*;
+import org.desafio.ModeloMatematico.utils.PrintModeloMatematico;
 import org.desafio.ModeloMatematico.variaveis.AlocacaoDeVoluntarioNaTurma;
 import org.desafio.ModeloMatematico.variaveis.FuncaoObjetivo;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class ModeloMatematico {
     MPSolver solver;
@@ -30,48 +22,22 @@ public class ModeloMatematico {
 
     VoluntarioDao voluntarios;
     TurmaDao turmas;
-    AlocacaoDao alocacoes;
+    public AlocacaoDao alocacoes;
 
-    private void imprimirModelo() {
-        Path path = Paths.get("lpModel.txt");
-
-        String lpModel = this.solver.exportModelAsLpFormat();
-        try {
-            Files.write(path, lpModel.getBytes());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public String exportModelAsLpFormat() {
+        return solver.exportModelAsLpFormat();
     }
 
-    private void imprimirStatusDoModelo() {
-        if (this.resultStatus == MPSolver.ResultStatus.OPTIMAL) {
-            System.out.println("Valor da função objetivo: " + this.objective.value());
-        } else {
-            System.err.println("Não há solução ótima!");
-        }
-
-        System.out.println("Problema resolvido em " + this.solver.wallTime() + " [ms]");
+    public boolean resultadoEhFactivel() {
+        return (this.resultStatus == MPSolver.ResultStatus.OPTIMAL);
     }
 
-    private void salvarSolucaoEmCsv() {
-        try {
-            File file = new File("solucao.csv");
-            FileWriter fw = new FileWriter(file);
-            BufferedWriter bw = new BufferedWriter(fw);
+    public double getSolutionValue() {
+        return this.objective.value();
+    }
 
-            bw.write("Voluntário;Turma;Alocação");
-            bw.newLine();
-
-            for (AlocacaoDeVoluntarioNaTurma alocacao : alocacoes.getAllAlocacoesComDominio()) {
-                bw.write(alocacao.voluntario.getId() + ";" + alocacao.turma.getNome() + ";" + (int)alocacao.variavel.solutionValue());
-                bw.newLine();
-            }
-
-            bw.close();
-            fw.close();
-        } catch (IOException e) {
-            System.out.println("Problema ao salvar a solução em CSV!");
-        }
+    public long getTempoDeExecucao() {
+        return this.solver.wallTime();
     }
 
     private void construirVariaveis() {
@@ -80,23 +46,34 @@ public class ModeloMatematico {
 
     private void construirRestricoes() {
         for (Turma turma : turmas.getAllTurmas()) {
-            new QuantidadeDeVoluntariosEmTurma(solver, turma, alocacoes.getPossiveisAlocacoesDeUmaTurma(turma));
+            ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesNaTurma = alocacoes.getPossiveisAlocacoesDeUmaTurma(turma);
+            if (alocacoesNaTurma.isEmpty()) {
+                continue;
+            }
+
+            new QuantidadeDeVoluntariosEmTurma(solver, turma, alocacoesNaTurma);
+            new ProporcaoDeGeneroEmTurmas(solver, turma, alocacoesNaTurma);
+            new ProporcaoDeExperienciaEmTurmas(solver, turma, alocacoesNaTurma);
+            //TODO: proporção entre grau de comprometimento
         }
 
         for (Voluntario voluntario : voluntarios.getAllVoluntarios()) {
-            new PermiteApenasUmaAlocacaoDoVoluntario(solver, voluntario, alocacoes.getPossiveisAlocacoesDeUmVoluntario(voluntario));
+            ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesDoVoluntario = alocacoes.getPossiveisAlocacoesDeUmVoluntario(voluntario);
+            if (alocacoesDoVoluntario.isEmpty()) {
+                continue;
+            }
+
+            new PermiteApenasUmaAlocacaoDoVoluntario(solver, voluntario, alocacoesDoVoluntario);
 
             for (Voluntario voluntarioNaEscala : voluntario.getVoluntariosNaMesmaEscala()) {
-                for (PreferenciaDePeriodo periodo : PreferenciaDePeriodo.getPeriodosValidos()) {
-                    new AlocacaoDeVoluntariosEmMesmaEscala(
-                            solver,
-                            voluntario,
-                            voluntarioNaEscala,
-                            periodo,
-                            alocacoes.getPossiveisAlocacoesDeUmVoluntarioEmUmPeriodo(voluntario, periodo),
-                            alocacoes.getPossiveisAlocacoesDeUmVoluntarioEmUmPeriodo(voluntarioNaEscala, periodo)
-                    );
+                ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesDoVoluntarioNaMesmaEscala =
+                        alocacoes.getPossiveisAlocacoesDeUmVoluntario(voluntarioNaEscala);
+                if (alocacoesDoVoluntarioNaMesmaEscala.isEmpty()) {
+                    continue;
                 }
+
+                new AlocacaoDeVoluntariosEmMesmaEscala(
+                        solver, voluntario, voluntarioNaEscala, alocacoesDoVoluntario, alocacoesDoVoluntarioNaMesmaEscala);
             }
         }
     }
@@ -116,10 +93,7 @@ public class ModeloMatematico {
         this.objective = new FuncaoObjetivo(this.solver, this.alocacoes).getObjective();
         this.resultStatus = solver.solve();
 
-        imprimirStatusDoModelo();
-        imprimirModelo();
-        salvarSolucaoEmCsv();
-
+        new PrintModeloMatematico(this);
         System.out.println("Finalizando modelo!");
     }
 }

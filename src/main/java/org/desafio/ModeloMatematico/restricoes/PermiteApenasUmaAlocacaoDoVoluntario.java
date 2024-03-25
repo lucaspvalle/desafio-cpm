@@ -7,17 +7,15 @@ import org.desafio.ModeloMatematico.variaveis.AlocacaoDeVoluntarioNaTurma;
 
 import java.util.ArrayList;
 
+/**
+ * Restrição para que o voluntário só possa ser alocado em, no máximo, uma turma.
+ * Para cada VOLUNTARIO, temos:
+ *
+ * <p>sum(TURMA, v_Alocacao(VOLUNTARIO, TURMA)) <= 1</p>
+ */
 public class PermiteApenasUmaAlocacaoDoVoluntario {
-
     public PermiteApenasUmaAlocacaoDoVoluntario(MPSolver solver, Voluntario voluntario, ArrayList<AlocacaoDeVoluntarioNaTurma> possiveisAlocacoesDoVoluntario) {
-        if (possiveisAlocacoesDoVoluntario.isEmpty()) {
-            return;
-        }
-
         MPConstraint cUnicaAlocacao = solver.makeConstraint(0, 1, "c_UnicaAlocacao{" + voluntario + "}");
-
-        for (AlocacaoDeVoluntarioNaTurma alocacao : possiveisAlocacoesDoVoluntario) {
-            cUnicaAlocacao.setCoefficient(alocacao.variavel, 1);
-        }
+        possiveisAlocacoesDoVoluntario.forEach(alocacao -> cUnicaAlocacao.setCoefficient(alocacao.variavel, 1));
     }
 }

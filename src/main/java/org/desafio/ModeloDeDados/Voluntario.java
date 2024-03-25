@@ -6,6 +6,7 @@ import org.desafio.ModeloDeDados.enums.PreferenciaDeFaixaEtaria;
 import org.desafio.ModeloDeDados.enums.PreferenciaDePeriodo;
 import org.desafio.ModeloDeDados.enums.PreferenciaDeProgressaoDeTurma;
 
+import java.time.Year;
 import java.util.ArrayList;
 
 public class Voluntario {
@@ -64,6 +65,14 @@ public class Voluntario {
 
     public ArrayList<Voluntario> getVoluntariosNaMesmaEscala() {
         return voluntariosNaMesmaEscala;
+    }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public boolean isVeterano() {
+        return (Year.now().getValue() - anoDeInicio >= 1);
     }
 
     public void setVoluntariosNaMesmaEscala(Voluntario voluntariosNaMesmaEscala) {

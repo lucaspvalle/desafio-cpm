@@ -13,7 +13,7 @@ public class FuncaoObjetivo {
     }
 
     public FuncaoObjetivo(MPSolver solver, AlocacaoDao alocacoes) {
-
+        //TODO: penalizar folga de proporção
         this.objective = solver.objective();
         for (AlocacaoDeVoluntarioNaTurma alocacao : alocacoes.getAllAlocacoesComDominio()) {
             objective.setCoefficient(alocacao.variavel, alocacao.voluntario.getComprometimento());

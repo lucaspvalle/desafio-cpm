@@ -8,15 +8,22 @@ import org.desafio.ModeloMatematico.variaveis.AlocacaoDeVoluntarioNaTurma;
 
 import java.util.ArrayList;
 
+/**
+ * Restrição para limitar a quantidade de voluntários alocados em uma turma, conforme a capacidade ideal.
+ * Para cada TURMA, temos:
+ *
+ * <p>sum(VOLUNTARIO, v_Alocacao(VOLUNTARIO, TURMA))
+ * <p><= numeroMaximoDeVoluntarios - v_FolgaDeNumeroMaximo(TURMA)</p>
+ *
+ * <p>Assim como também temos a restrição similar para a quantidade mínima de voluntários:</p>
+ * <p>sum(VOLUNTARIO, v_Alocacao(VOLUNTARIO, TURMA))
+ * <p>>=  numeroMinimoDeVoluntarios - v_FolgaDeNumeroMinimo(TURMA)</p>
+ */
 public class QuantidadeDeVoluntariosEmTurma {
     final int numeroMaximoDeVoluntarios = 8;
     final int numeroMinimoDeVoluntarios = 3;
 
     public QuantidadeDeVoluntariosEmTurma(MPSolver solver, Turma turma, ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesNaTurma) {
-        if (alocacoesNaTurma.isEmpty()) {
-            return;
-        }
-
         double inf = Double.POSITIVE_INFINITY;
         MPConstraint cNumeroMaximo = solver.makeConstraint(-inf, numeroMaximoDeVoluntarios,"c_NumeroMaximo{" + turma + "}");
         MPConstraint cNumeroMinimo = solver.makeConstraint(numeroMinimoDeVoluntarios, inf, "c_NumeroMinimo{" + turma + "}");
@@ -26,10 +33,10 @@ public class QuantidadeDeVoluntariosEmTurma {
             cNumeroMinimo.setCoefficient(alocacao.variavel, 1);
         }
 
-        MPVariable variavelDeFolgaMaxima = solver.makeNumVar(0, numeroMaximoDeVoluntarios, "v_FolgaDeNumeroMaximo{" + turma + "}");
-        MPVariable variavelDeFolgaMinima = solver.makeNumVar(0, numeroMinimoDeVoluntarios, "v_FolgaDeNumeroMinimo{" + turma + "}");
+        MPVariable vFolgaMaxima = solver.makeNumVar(0, numeroMaximoDeVoluntarios, "v_FolgaDeNumeroMaximo{" + turma + "}");
+        MPVariable vFolgaMinima = solver.makeNumVar(0, numeroMinimoDeVoluntarios, "v_FolgaDeNumeroMinimo{" + turma + "}");
 
-        cNumeroMaximo.setCoefficient(variavelDeFolgaMaxima, -1);
-        cNumeroMinimo.setCoefficient(variavelDeFolgaMinima, 1);
+        cNumeroMaximo.setCoefficient(vFolgaMaxima, -1);
+        cNumeroMinimo.setCoefficient(vFolgaMinima, 1);
     }
 }

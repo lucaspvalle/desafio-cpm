@@ -45,6 +45,14 @@ public class AlocacaoDeVoluntarioNaTurma {
         return (this.turma == turmaSeguinteDoVoluntario);
     }
 
+    public int getSolucao() {
+        if (this.variavel != null) {
+            return (int) this.variavel.solutionValue();
+        } else {
+            return 0;
+        }
+    }
+
     public AlocacaoDeVoluntarioNaTurma(MPSolver solver, Voluntario voluntario, Turma turma) {
         this.voluntario = voluntario;
         this.turma = turma;
@@ -55,11 +63,9 @@ public class AlocacaoDeVoluntarioNaTurma {
                 & voluntarioTemPreferenciaPelaFaixaEtariaDaTurma()
                 & voluntarioTemPreferenciaDeTurma());
 
-        if (!this.dominio) {
-            return;
+        if (this.dominio) {
+            this.variavel = solver.makeBoolVar(toString());
         }
-
-        this.variavel = solver.makeBoolVar(toString());
     }
 
     @Override
