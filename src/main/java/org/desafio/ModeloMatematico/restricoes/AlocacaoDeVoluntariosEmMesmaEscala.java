@@ -5,6 +5,7 @@ import com.google.ortools.linearsolver.MPSolver;
 import com.google.ortools.linearsolver.MPVariable;
 import org.desafio.ModeloDeDados.Voluntario;
 import org.desafio.ModeloDeDados.enums.PreferenciaDePeriodo;
+import org.desafio.ModeloMatematico.Variaveis;
 import org.desafio.ModeloMatematico.variaveis.AlocacaoDeVoluntarioNaTurma;
 
 import java.util.ArrayList;
@@ -40,6 +41,7 @@ public class AlocacaoDeVoluntariosEmMesmaEscala {
     }
 
     public AlocacaoDeVoluntariosEmMesmaEscala(MPSolver solver,
+                                              Variaveis variaveis,
                                               Voluntario voluntario,
                                               Voluntario voluntarioNaMesmaEscala,
                                               ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesDoVoluntario,
@@ -53,7 +55,7 @@ public class AlocacaoDeVoluntariosEmMesmaEscala {
         for (PreferenciaDePeriodo periodo : PreferenciaDePeriodo.getPeriodosValidos()) {
             String chaveComPeriodo = getChaveDeVoluntariosComPeriodo(periodo);
 
-            MPVariable vLiberaPeriodoParaMesmaEscala = solver.makeBoolVar("v_LiberaPeriodoParaMesmaEscala" + chaveComPeriodo);
+            MPVariable vLiberaPeriodoParaMesmaEscala = variaveis.makeBoolVar("v_LiberaPeriodoParaMesmaEscala" + chaveComPeriodo, 0.0);
             cPermiteApenasUmPeriodoParaMesmaEscala.setCoefficient(vLiberaPeriodoParaMesmaEscala, 1);
 
             MPConstraint cControlaAlocacaoParaPeriodoNaMesmaEscala = solver.makeConstraint(

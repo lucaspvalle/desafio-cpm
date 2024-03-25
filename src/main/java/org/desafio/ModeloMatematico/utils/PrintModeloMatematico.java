@@ -44,7 +44,7 @@ public class PrintModeloMatematico {
             bw.write("Voluntário;Turma;Alocação");
             bw.newLine();
 
-            for (AlocacaoDeVoluntarioNaTurma alocacao : this.modelo.alocacoes.getAllAlocacoesComDominio()) {
+            for (AlocacaoDeVoluntarioNaTurma alocacao : this.modelo.variaveis.alocacoes.getAllAlocacoesComDominio()) {
                 bw.write(alocacao.voluntario.getId() + ";" + alocacao.turma.getNome() + ";" + alocacao.getSolucao());
                 bw.newLine();
             }

@@ -1,10 +1,10 @@
 package org.desafio.ModeloMatematico.dao;
 
-import com.google.ortools.linearsolver.MPSolver;
 import org.desafio.ModeloDeDados.Turma;
 import org.desafio.ModeloDeDados.Voluntario;
 import org.desafio.ModeloDeDados.dao.TurmaDao;
 import org.desafio.ModeloDeDados.dao.VoluntarioDao;
+import org.desafio.ModeloMatematico.Variaveis;
 import org.desafio.ModeloMatematico.variaveis.AlocacaoDeVoluntarioNaTurma;
 
 import java.util.ArrayList;
@@ -30,10 +30,10 @@ public class AlocacaoDao {
         return filtrarAlocacoes(alocacao -> (alocacao.dominio));
     }
 
-    public AlocacaoDao(MPSolver solver, VoluntarioDao voluntarios, TurmaDao turmas) {
+    public AlocacaoDao(Variaveis variaveis, VoluntarioDao voluntarios, TurmaDao turmas) {
         for (Voluntario voluntario : voluntarios.getAllVoluntarios()) {
             for (Turma turma : turmas.getAllTurmas()) {
-                this.alocacoes.add(new AlocacaoDeVoluntarioNaTurma(solver, voluntario, turma));
+                this.alocacoes.add(new AlocacaoDeVoluntarioNaTurma(variaveis, voluntario, turma));
             }
         }
     }

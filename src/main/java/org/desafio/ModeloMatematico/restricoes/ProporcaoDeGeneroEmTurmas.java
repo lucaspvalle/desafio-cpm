@@ -6,6 +6,7 @@ import com.google.ortools.linearsolver.MPVariable;
 import org.desafio.ModeloDeDados.Turma;
 import org.desafio.ModeloDeDados.Voluntario;
 import org.desafio.ModeloDeDados.enums.Genero;
+import org.desafio.ModeloMatematico.Variaveis;
 import org.desafio.ModeloMatematico.variaveis.AlocacaoDeVoluntarioNaTurma;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class ProporcaoDeGeneroEmTurmas {
         }
     }
 
-    public ProporcaoDeGeneroEmTurmas(MPSolver solver, Turma turma, ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesNaTurma) {
+    public ProporcaoDeGeneroEmTurmas(MPSolver solver, Variaveis variaveis, Turma turma, ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesNaTurma) {
         MPConstraint cCalculaProporcaoDeGeneroNaTurma = solver.makeConstraint(
                 0, 0,"c_CalculaProporcaoDeGeneroNaTurma{" + turma + "}");
 
@@ -40,10 +41,10 @@ public class ProporcaoDeGeneroEmTurmas {
                 cCalculaProporcaoDeGeneroNaTurma.setCoefficient(
                         alocacao.variavel, calculaCoeficienteDoVoluntarioPeloGenero(alocacao.voluntario)));
 
-        MPVariable vFolgaMaisHomensAlocadosNaTurma = solver.makeNumVar(
-                0, alocacoesNaTurma.size(), "v_FolgaMaisHomensAlocadosNaTurma{" + turma + "}");
-        MPVariable vFolgaMaisMulheresAlocadasNaTurma = solver.makeNumVar(
-                0, alocacoesNaTurma.size(), "v_FolgaMaisMulheresAlocadasNaTurma{" + turma + "}");
+        MPVariable vFolgaMaisHomensAlocadosNaTurma = variaveis.makeNumVar(
+                0, alocacoesNaTurma.size(), "v_FolgaMaisHomensAlocadosNaTurma{" + turma + "}", -1.0);
+        MPVariable vFolgaMaisMulheresAlocadasNaTurma = variaveis.makeNumVar(
+                0, alocacoesNaTurma.size(), "v_FolgaMaisMulheresAlocadasNaTurma{" + turma + "}", -1.0);
 
         cCalculaProporcaoDeGeneroNaTurma.setCoefficient(vFolgaMaisHomensAlocadosNaTurma, -1);
         cCalculaProporcaoDeGeneroNaTurma.setCoefficient(vFolgaMaisMulheresAlocadasNaTurma, 1);

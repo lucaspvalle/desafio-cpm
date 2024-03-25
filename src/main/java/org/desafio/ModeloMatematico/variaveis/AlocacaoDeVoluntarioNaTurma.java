@@ -1,12 +1,12 @@
 package org.desafio.ModeloMatematico.variaveis;
 
-import com.google.ortools.linearsolver.MPSolver;
 import com.google.ortools.linearsolver.MPVariable;
 import org.desafio.ModeloDeDados.Turma;
 import org.desafio.ModeloDeDados.Voluntario;
 import org.desafio.ModeloDeDados.enums.PreferenciaDeFaixaEtaria;
 import org.desafio.ModeloDeDados.enums.PreferenciaDePeriodo;
 import org.desafio.ModeloDeDados.enums.PreferenciaDeProgressaoDeTurma;
+import org.desafio.ModeloMatematico.Variaveis;
 
 public class AlocacaoDeVoluntarioNaTurma {
     public Voluntario voluntario;
@@ -53,7 +53,7 @@ public class AlocacaoDeVoluntarioNaTurma {
         }
     }
 
-    public AlocacaoDeVoluntarioNaTurma(MPSolver solver, Voluntario voluntario, Turma turma) {
+    public AlocacaoDeVoluntarioNaTurma(Variaveis variaveis, Voluntario voluntario, Turma turma) {
         this.voluntario = voluntario;
         this.turma = turma;
 
@@ -64,7 +64,7 @@ public class AlocacaoDeVoluntarioNaTurma {
                 & voluntarioTemPreferenciaDeTurma());
 
         if (this.dominio) {
-            this.variavel = solver.makeBoolVar(toString());
+            this.variavel = variaveis.makeBoolVar(toString(), this.voluntario.getComprometimento());
         }
     }
 

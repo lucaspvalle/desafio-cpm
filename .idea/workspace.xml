@@ -4,20 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c77c7d55-f7c5-4b66-8686-35d0155737aa" name="Changes" comment="fix: corrige bug em cálculo de domínio de nível de voluntário (deve ser maior do que o nível da turma)&#10;feat:&#10;- filtra domínio de período para considerar a preferência de período do voluntário na mesma escala&#10;- exporta solução em csv">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/ProporcaoDeExperienciaEmTurmas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/ProporcaoDeGeneroEmTurmas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="c77c7d55-f7c5-4b66-8686-35d0155737aa" name="Changes" comment="refactor:&#10;- separa métodos de imprimir em uma classe específica&#10;docs:&#10;- adiciona modelagem em linguagem algébrica e explica o objetivo de cada classe de restrição&#10;feat:&#10;- adiciona novas restrições para priorizar proporções&#10;fix:&#10;- corrige modelagem de voluntários alocados na mesma escala">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/Restricoes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/Variaveis.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/Voluntario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/Voluntario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/dao/VoluntarioDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/dao/VoluntarioDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/enums/PreferenciaDePeriodo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloDeDados/enums/PreferenciaDePeriodo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/ModeloMatematico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/ModeloMatematico.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/dao/AlocacaoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/dao/AlocacaoDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/AlocacaoDeVoluntariosEmMesmaEscala.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/AlocacaoDeVoluntariosEmMesmaEscala.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/PermiteApenasUmaAlocacaoDoVoluntario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/PermiteApenasUmaAlocacaoDoVoluntario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/ProporcaoDeExperienciaEmTurmas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/ProporcaoDeExperienciaEmTurmas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/ProporcaoDeGeneroEmTurmas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/ProporcaoDeGeneroEmTurmas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/QuantidadeDeVoluntariosEmTurma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/QuantidadeDeVoluntariosEmTurma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/utils/PrintModeloMatematico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/utils/PrintModeloMatematico.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/AlocacaoDeVoluntarioNaTurma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/AlocacaoDeVoluntarioNaTurma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FuncaoObjetivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FuncaoObjetivo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FuncaoObjetivo.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +48,7 @@
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
         <option name="accountId" value="8394a99f-fbad-483a-a8f4-0eb4b88ba643" />
-        <option name="url" value="https://github.com/lucaspvalle/desafio-cpm-java.git" />
+        <option name="url" value="https://github.com/lucaspvalle/desafio-cpm.git" />
       </UrlAndAccount>
     </option>
   </component>
@@ -70,16 +69,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/LucasPerini/IdeaProjects/desafio-cpm/src/main/java/org/desafio/Main.java&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "onboarding.tips.debug.path": "C:/Users/LucasPerini/IdeaProjects/desafio-cpm/src/main/java/org/desafio/Main.java",
+    "settings.editor.selected.configurable": "configurable.group.appearance"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.desafio.ModeloMatematico.restricoes" />
@@ -170,7 +169,39 @@
       <option name="project" value="LOCAL" />
       <updated>1709225470589</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feat: prioriza alocação de voluntários com maior grau de comprometimento">
+      <option name="closed" value="true" />
+      <created>1709830512150</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1709830512150</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: esboça restrição de voluntários em mesma escala">
+      <option name="closed" value="true" />
+      <created>1709830577453</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1709830577453</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat: adiciona arquivos para novas restrições (ainda a serem implementadas)">
+      <option name="closed" value="true" />
+      <created>1709830606553</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1709830606553</updated>
+    </task>
+    <task id="LOCAL-00012" summary="refactor:&#10;- separa métodos de imprimir em uma classe específica&#10;docs:&#10;- adiciona modelagem em linguagem algébrica e explica o objetivo de cada classe de restrição&#10;feat:&#10;- adiciona novas restrições para priorizar proporções&#10;fix:&#10;- corrige modelagem de voluntários alocados na mesma escala">
+      <option name="closed" value="true" />
+      <created>1711326041558</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1711326041558</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -213,7 +244,11 @@
     <MESSAGE value="feat: adiciona variável de folga em restrição de qtdade de voluntários em turma&#10;refactor: adiciona mais logs" />
     <MESSAGE value="refactor: melhora construção de métodos duplicados" />
     <MESSAGE value="fix: corrige bug em cálculo de domínio de nível de voluntário (deve ser maior do que o nível da turma)&#10;feat:&#10;- filtra domínio de período para considerar a preferência de período do voluntário na mesma escala&#10;- exporta solução em csv" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: corrige bug em cálculo de domínio de nível de voluntário (deve ser maior do que o nível da turma)&#10;feat:&#10;- filtra domínio de período para considerar a preferência de período do voluntário na mesma escala&#10;- exporta solução em csv" />
+    <MESSAGE value="feat: prioriza alocação de voluntários com maior grau de comprometimento" />
+    <MESSAGE value="feat: esboça restrição de voluntários em mesma escala" />
+    <MESSAGE value="feat: adiciona arquivos para novas restrições (ainda a serem implementadas)" />
+    <MESSAGE value="refactor:&#10;- separa métodos de imprimir em uma classe específica&#10;docs:&#10;- adiciona modelagem em linguagem algébrica e explica o objetivo de cada classe de restrição&#10;feat:&#10;- adiciona novas restrições para priorizar proporções&#10;fix:&#10;- corrige modelagem de voluntários alocados na mesma escala" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor:&#10;- separa métodos de imprimir em uma classe específica&#10;docs:&#10;- adiciona modelagem em linguagem algébrica e explica o objetivo de cada classe de restrição&#10;feat:&#10;- adiciona novas restrições para priorizar proporções&#10;fix:&#10;- corrige modelagem de voluntários alocados na mesma escala" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">

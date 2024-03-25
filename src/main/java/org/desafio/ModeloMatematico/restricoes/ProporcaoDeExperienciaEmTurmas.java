@@ -5,6 +5,7 @@ import com.google.ortools.linearsolver.MPSolver;
 import com.google.ortools.linearsolver.MPVariable;
 import org.desafio.ModeloDeDados.Turma;
 import org.desafio.ModeloDeDados.Voluntario;
+import org.desafio.ModeloMatematico.Variaveis;
 import org.desafio.ModeloMatematico.variaveis.AlocacaoDeVoluntarioNaTurma;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class ProporcaoDeExperienciaEmTurmas {
         }
     }
 
-    public ProporcaoDeExperienciaEmTurmas(MPSolver solver, Turma turma, ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesNaTurma) {
+    public ProporcaoDeExperienciaEmTurmas(MPSolver solver, Variaveis variaveis, Turma turma, ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesNaTurma) {
         MPConstraint cCalculaProporcaoDeExperienciaNaTurma = solver.makeConstraint(
                 0, 0,"c_CalculaProporcaoDeExperienciaNaTurma{" + turma + "}");
 
@@ -39,10 +40,10 @@ public class ProporcaoDeExperienciaEmTurmas {
                 cCalculaProporcaoDeExperienciaNaTurma.setCoefficient(
                         alocacao.variavel, calculaCoeficienteDoVoluntarioPelaExperiencia(alocacao.voluntario)));
 
-        MPVariable vFolgaMaisCalourosAlocadosNaTurma = solver.makeNumVar(
-                0, alocacoesNaTurma.size(), "v_FolgaMaisCalourosAlocadosNaTurma{" + turma + "}");
-        MPVariable vFolgaMaisVeteranosAlocadasNaTurma = solver.makeNumVar(
-                0, alocacoesNaTurma.size(), "v_FolgaMaisVeteranosAlocadasNaTurma{" + turma + "}");
+        MPVariable vFolgaMaisCalourosAlocadosNaTurma = variaveis.makeNumVar(
+                0, alocacoesNaTurma.size(), "v_FolgaMaisCalourosAlocadosNaTurma{" + turma + "}", -1.0);
+        MPVariable vFolgaMaisVeteranosAlocadasNaTurma = variaveis.makeNumVar(
+                0, alocacoesNaTurma.size(), "v_FolgaMaisVeteranosAlocadasNaTurma{" + turma + "}", -1.0);
 
         cCalculaProporcaoDeExperienciaNaTurma.setCoefficient(vFolgaMaisCalourosAlocadosNaTurma, 1);
         cCalculaProporcaoDeExperienciaNaTurma.setCoefficient(vFolgaMaisVeteranosAlocadasNaTurma, -1);
