@@ -1,5 +1,8 @@
 package org.desafio.Integracao;
 
+import org.desafio.Integracao.utils.LeitorCSV;
+
+import java.util.ArrayList;
 import java.util.Objects;
 
 public enum ArquivosDeIntegracao {
@@ -10,6 +13,8 @@ public enum ArquivosDeIntegracao {
     MESMA_ESCALA("tb_vol_mesmaescala");
 
     private final String arquivo;
+    private final LeitorCSV leitor = new LeitorCSV();
+
     ArquivosDeIntegracao(String arquivo) {
         this.arquivo = arquivo;
     }
@@ -18,7 +23,11 @@ public enum ArquivosDeIntegracao {
         return Objects.requireNonNull(getClass().getClassLoader().getResource(csvFile)).getPath();
     }
 
-    public String getCaminho() {
+    private String getPath() {
         return getResourceFilePath("data/" + this.arquivo + ".csv");
+    }
+
+    public ArrayList<String> readIntegrationFile() {
+        return leitor.readFile(ArquivosDeIntegracao.TURMA.getPath());
     }
 }
