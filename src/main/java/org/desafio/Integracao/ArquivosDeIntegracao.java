@@ -28,6 +28,6 @@ public enum ArquivosDeIntegracao {
     }
 
     public ArrayList<String> readIntegrationFile() {
-        return leitor.readFile(ArquivosDeIntegracao.TURMA.getPath());
+        return leitor.readFile(getPath());
     }
 }

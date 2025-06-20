@@ -9,8 +9,9 @@ public class TurmaDao {
     ArrayList<Turma> turmas = new ArrayList<>();
 
     public Turma getTurmaPorId(String nome) {
-        return this.turmas.stream().filter(t -> t.getNome().equals(nome)).findFirst().orElseThrow(
-                () -> new RuntimeException("Turma não cadastrada: " + nome));
+        return this.turmas.stream().filter(
+                t -> t.getNome().equals(nome)
+        ).findFirst().orElseThrow(() -> new RuntimeException("Turma sem cadastro: " + nome));
     }
 
     private void updateTurmaSeguinte(Turma turmaAtual, Turma turmaSeguinte) {
@@ -25,14 +26,30 @@ public class TurmaDao {
         return turmas;
     }
 
-    public TurmaDao(ArrayList<String> csvTurmas, ArrayList<String> csvProgressaoDeTurmas, ArrayList<String> csvEquivalencias) {
-        // primeiro, cadastra todas as turmas
+    public TurmaDao(
+            ArrayList<String> csvTurmas,
+            ArrayList<String> csvProgressaoDeTurmas,
+            ArrayList<String> csvEquivalencias
+    ) {
         for (String line : csvTurmas) {
-            Turma turma = new Turma(line.split(","), csvEquivalencias);
-            this.turmas.add(turma);
+            String[] dadosDeTurmas = line.split(",");
+            String nome = dadosDeTurmas[0];
+            String faixaEtaria = dadosDeTurmas[1];
+            String nivel = dadosDeTurmas[2];
+            String periodo = dadosDeTurmas[3];
+
+            String registroDeEquivalencia = csvEquivalencias.stream().filter(
+                    dadosDeEquivalencias -> dadosDeEquivalencias.split(",")[0].equals(nivel)
+            ).findFirst().orElse("");
+
+            String equivalente = null;
+            if (!registroDeEquivalencia.isEmpty()) {
+                equivalente = registroDeEquivalencia.split(",")[1];
+            }
+
+            this.turmas.add(new Turma(nome, faixaEtaria, nivel, equivalente, periodo));
         }
 
-        //em seguida, adiciona as progressões para as turmas cadastradas
         for (String line : csvProgressaoDeTurmas) {
             String[] linhasSeparadas = line.split(",");
 

@@ -3,8 +3,6 @@ package org.desafio.ModeloDeDados;
 import org.desafio.ModeloDeDados.enums.PreferenciaDeFaixaEtaria;
 import org.desafio.ModeloDeDados.enums.PreferenciaDePeriodo;
 
-import java.util.ArrayList;
-
 public class Turma {
     String nome;
     PreferenciaDeFaixaEtaria faixaEtaria;
@@ -12,11 +10,11 @@ public class Turma {
     PreferenciaDePeriodo periodo;
     Turma turmaSeguinte;
 
-    public Turma(String[] line, ArrayList<String> csvEquivalencias) {
-        this.nome = line[0];
-        this.faixaEtaria = PreferenciaDeFaixaEtaria.getPreferencia(line[1]);
-        this.nivel = new NivelDeConhecimento(line[2], csvEquivalencias);
-        this.periodo = PreferenciaDePeriodo.getPreferencia(line[3]);
+    public Turma(String nome, String faixaEtaria, String nivel, String equivalente, String periodo) {
+        this.nome = nome;
+        this.faixaEtaria = PreferenciaDeFaixaEtaria.getPreferencia(faixaEtaria);
+        this.nivel = new NivelDeConhecimento(nivel, equivalente);
+        this.periodo = PreferenciaDePeriodo.getPreferencia(periodo);
     }
 
     public String getNome() {
