@@ -7,7 +7,7 @@ public enum PreferenciaDeFaixaEtaria {
 
     public static PreferenciaDeFaixaEtaria getPreferencia(String preferencia) {
         return switch (preferencia) {
-            case "Adolescente" -> ADOLESCENTE;
+            case "Adolescentes" -> ADOLESCENTE;
             case "Adulto" -> ADULTO;
             default -> FAIXA_INDIFERENTE;
         };

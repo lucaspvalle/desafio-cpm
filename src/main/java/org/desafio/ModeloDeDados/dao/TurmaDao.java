@@ -3,7 +3,6 @@ package org.desafio.ModeloDeDados.dao;
 import org.desafio.ModeloDeDados.Turma;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class TurmaDao {
     ArrayList<Turma> turmas = new ArrayList<>();
@@ -12,14 +11,6 @@ public class TurmaDao {
         return this.turmas.stream().filter(
                 t -> t.getNome().equals(nome)
         ).findFirst().orElseThrow(() -> new RuntimeException("Turma sem cadastro: " + nome));
-    }
-
-    private void updateTurmaSeguinte(Turma turmaAtual, Turma turmaSeguinte) {
-        Optional<Turma> turmaAtualDentroDoDao = this.turmas.stream().filter(
-                        t -> turmaAtual.getNome().equals(t.getNome())
-                ).findFirst();
-
-        turmaAtualDentroDoDao.ifPresent(turma -> turma.setTurmaSeguinte(turmaSeguinte));
     }
 
     public ArrayList<Turma> getAllTurmas() {
@@ -51,14 +42,16 @@ public class TurmaDao {
         }
 
         for (String line : csvProgressaoDeTurmas) {
-            String[] linhasSeparadas = line.split(",");
+            String[] dadosDeProgressao = line.split(",");
+            String turmaAtual = dadosDeProgressao[0];
 
             try {
-                Turma turmaAtual = getTurmaPorId(linhasSeparadas[0]);
-                Turma turmaSeguinte = getTurmaPorId(linhasSeparadas[1]);
-
-                updateTurmaSeguinte(turmaAtual, turmaSeguinte);
-            } catch (RuntimeException e) {
+                Turma turmaSeguinte = getTurmaPorId(dadosDeProgressao[1]);
+                this.turmas.stream().filter(
+                        t -> turmaAtual.equals(t.getNome())
+                ).findFirst().ifPresent(turmaAtualDentroDoDao -> turmaAtualDentroDoDao.setTurmaSeguinte(turmaSeguinte));
+            }
+            catch (RuntimeException e) {
                 System.out.println(e.getMessage());
             }
         }
