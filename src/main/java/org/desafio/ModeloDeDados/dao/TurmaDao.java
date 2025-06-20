@@ -14,7 +14,7 @@ public class TurmaDao {
     }
 
     public ArrayList<Turma> getAllTurmas() {
-        return turmas;
+        return this.turmas;
     }
 
     public TurmaDao(

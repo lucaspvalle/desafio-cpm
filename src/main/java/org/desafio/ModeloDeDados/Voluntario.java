@@ -1,12 +1,10 @@
 package org.desafio.ModeloDeDados;
 
-import org.desafio.ModeloDeDados.dao.TurmaDao;
 import org.desafio.ModeloDeDados.enums.Genero;
 import org.desafio.ModeloDeDados.enums.PreferenciaDeFaixaEtaria;
 import org.desafio.ModeloDeDados.enums.PreferenciaDePeriodo;
 import org.desafio.ModeloDeDados.enums.PreferenciaDeProgressaoDeTurma;
 
-import java.time.Year;
 import java.util.ArrayList;
 
 public class Voluntario {
@@ -22,17 +20,28 @@ public class Voluntario {
     PreferenciaDeFaixaEtaria faixaEtaria;
     ArrayList<Voluntario> voluntariosNaMesmaEscala = new ArrayList<>();
 
-    public Voluntario(String[] line, TurmaDao turmaDao) {
-        this.id = Integer.parseInt(line[0]);
-        this.genero = Genero.getGenero(line[1]);
-        //this.funcao = line[2];
-        this.anoDeInicio = Integer.parseInt(line[3].split(",")[0]);
-        this.turma = turmaDao.getTurmaPorId(line[4]);
-        this.comprometimento = Double.parseDouble(line[5].replace(',', '.'));
-        this.nivel = new NivelDeConhecimento(line[6]);
-        this.periodo = PreferenciaDePeriodo.getPreferencia(line[7]);
-        this.progressao = PreferenciaDeProgressaoDeTurma.getPreferencia(line[8]);
-        this.faixaEtaria = PreferenciaDeFaixaEtaria.getPreferencia(line[9]);
+    public Voluntario(
+            int id,
+            String genero,
+            // String funcao,
+            int anoDeInicio,
+            Turma turma,
+            Double comprometimento,
+            String nivel,
+            String periodo,
+            String progressao,
+            String faixaEtaria
+    ) {
+        this.id = id;
+        this.genero = Genero.getGenero(genero);
+        //this.funcao = funcao;
+        this.anoDeInicio = anoDeInicio;
+        this.turma = turma;
+        this.comprometimento = comprometimento;
+        this.nivel = new NivelDeConhecimento(nivel);
+        this.periodo = PreferenciaDePeriodo.getPreferencia(periodo);
+        this.progressao = PreferenciaDeProgressaoDeTurma.getPreferencia(progressao);
+        this.faixaEtaria = PreferenciaDeFaixaEtaria.getPreferencia(faixaEtaria);
     }
 
     public Integer getId() {
@@ -72,7 +81,8 @@ public class Voluntario {
     }
 
     public boolean isVeterano() {
-        return (Year.now().getValue() - anoDeInicio >= 1);
+        int anoAtual = 2018;  // Year.now().getValue()
+        return (anoAtual - anoDeInicio >= 1);
     }
 
     public void setVoluntariosNaMesmaEscala(Voluntario voluntariosNaMesmaEscala) {

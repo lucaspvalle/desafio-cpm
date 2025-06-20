@@ -7,7 +7,7 @@ public enum PreferenciaDePeriodo {
 
     public static PreferenciaDePeriodo getPreferencia(String preferencia) {
         return switch (preferencia) {
-            case "Manhã" -> MANHA;
+            case "ManhÃ£" -> MANHA;
             case "Tarde" -> TARDE;
             default -> PERIODO_INDIFERENTE;
         };

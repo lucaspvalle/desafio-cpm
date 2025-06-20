@@ -1,45 +1,55 @@
 package org.desafio.ModeloDeDados.dao;
 
+import org.desafio.ModeloDeDados.Turma;
 import org.desafio.ModeloDeDados.Voluntario;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class VoluntarioDao {
     ArrayList<Voluntario> voluntarios = new ArrayList<>();
 
     public Voluntario getVoluntarioPorId(Integer id) {
         return this.voluntarios.stream().filter(v -> id.equals(v.getId())).findFirst().orElseThrow(
-                () -> new RuntimeException("Voluntário não cadastrado: " + id));
+                () -> new RuntimeException("Vol. sem cadastro: " + id));
     }
 
     public ArrayList<Voluntario> getAllVoluntarios() {
         return voluntarios;
     }
 
-    private void updateEscalaDeVoluntario(Voluntario voluntario, Voluntario voluntarioNaMesmaEscala) {
-        Optional<Voluntario> voluntarioDentroDoDao = this.voluntarios.stream().filter(
-                v -> voluntario.getId().equals(v.getId())).findFirst();
-
-        voluntarioDentroDoDao.ifPresent(vol -> vol.setVoluntariosNaMesmaEscala(voluntarioNaMesmaEscala));
-    }
-
-    public VoluntarioDao(TurmaDao turmas, ArrayList<String> csvVoluntarios, ArrayList<String> csvVoluntariosEmEscala) {
-        // primeiro, cadastra todos os voluntários
+    public VoluntarioDao(
+            TurmaDao turmas,
+            ArrayList<String> csvVoluntarios,
+            ArrayList<String> csvVoluntariosEmEscala
+    ) {
         for (String line : csvVoluntarios) {
-            Voluntario voluntario = new Voluntario(line.split(";"), turmas);
-            this.voluntarios.add(voluntario);
+            String[] dadosDeVoluntario = line.split(";");
+
+            int id = Integer.parseInt(dadosDeVoluntario[0]);
+            String genero = dadosDeVoluntario[1];
+            // String funcao = dadosDeVoluntario[2];
+            int anoDeInicio = Integer.parseInt(dadosDeVoluntario[3].split(",")[0]);
+            Turma turma = turmas.getTurmaPorId(dadosDeVoluntario[4]);
+            Double comprometimento = Double.parseDouble(dadosDeVoluntario[5].replace(',', '.'));
+            String nivel = dadosDeVoluntario[6];
+            String periodo = dadosDeVoluntario[7];
+            String progressao = dadosDeVoluntario[8];
+            String faixaEtaria = dadosDeVoluntario[9];
+
+            this.voluntarios.add(new Voluntario(
+                    id, genero, anoDeInicio, turma, comprometimento, nivel, periodo, progressao, faixaEtaria));
         }
 
-        //atualiza voluntários em mesma escala
         for (String line : csvVoluntariosEmEscala) {
-            String[] linhasSeparadas = line.split(",");
+            String[] dadosDeMesmaEscala = line.split(",");
 
             try {
-                Voluntario voluntario = getVoluntarioPorId(Integer.valueOf(linhasSeparadas[0]));
-                Voluntario voluntarioNaMesmaEscala = getVoluntarioPorId(Integer.valueOf(linhasSeparadas[1]));
-
-                updateEscalaDeVoluntario(voluntario, voluntarioNaMesmaEscala);
+                Voluntario voluntario = getVoluntarioPorId(Integer.valueOf(dadosDeMesmaEscala[0]));
+                Voluntario voluntarioNaMesmaEscala = getVoluntarioPorId(Integer.valueOf(dadosDeMesmaEscala[1]));
+                this.voluntarios.stream().filter(
+                        v -> voluntario.getId().equals(v.getId())
+                ).findFirst().ifPresent(volDentroDoDao ->
+                        volDentroDoDao.setVoluntariosNaMesmaEscala(voluntarioNaMesmaEscala));
             } catch (RuntimeException e) {
                 System.out.println(e.getMessage());
             }
