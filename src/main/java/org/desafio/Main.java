@@ -1,7 +1,7 @@
 package org.desafio;
 
+import org.desafio.Integracao.ImportacaoDeDados;
 import org.desafio.ModeloMatematico.ModeloMatematico;
-import org.desafio.integracao.ImportacaoDeDados;
 
 
 public class Main {
