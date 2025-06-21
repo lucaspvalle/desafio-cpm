@@ -34,7 +34,6 @@ public class Variaveis {
 
     public void adicionarVariaveisNaFuncaoObjetivo() {
         variaveis.forEach((var, peso) -> solver.objective().setCoefficient(var, peso));
-        solver.objective().setMaximization();
     }
 
     public Variaveis(MPSolver solver, VoluntarioDao voluntarios, TurmaDao turmas) {

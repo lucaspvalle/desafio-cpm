@@ -19,21 +19,25 @@ public class AlocacaoDao {
     }
 
     public ArrayList<AlocacaoDeVoluntarioNaTurma> getPossiveisAlocacoesDeUmaTurma(Turma turmaFiltrada) {
-        return filtrarAlocacoes(alocacao -> (alocacao.turma.equals(turmaFiltrada)) & alocacao.dominio);
+        return filtrarAlocacoes(alocacao -> alocacao.turma.equals(turmaFiltrada));
     }
 
     public ArrayList<AlocacaoDeVoluntarioNaTurma> getPossiveisAlocacoesDeUmVoluntario(Voluntario voluntarioFiltrado) {
-        return filtrarAlocacoes(alocacao -> (alocacao.voluntario.equals(voluntarioFiltrado)) & alocacao.dominio);
+        return filtrarAlocacoes(alocacao -> alocacao.voluntario.equals(voluntarioFiltrado));
     }
 
-    public ArrayList<AlocacaoDeVoluntarioNaTurma> getAllAlocacoesComDominio() {
-        return filtrarAlocacoes(alocacao -> (alocacao.dominio));
+    public ArrayList<AlocacaoDeVoluntarioNaTurma> getAlocacoes() {
+        return this.alocacoes;
     }
 
     public AlocacaoDao(Variaveis variaveis, VoluntarioDao voluntarios, TurmaDao turmas) {
         for (Voluntario voluntario : voluntarios.getAllVoluntarios()) {
             for (Turma turma : turmas.getAllTurmas()) {
-                this.alocacoes.add(new AlocacaoDeVoluntarioNaTurma(variaveis, voluntario, turma));
+                AlocacaoDeVoluntarioNaTurma alocacao = new AlocacaoDeVoluntarioNaTurma(variaveis, voluntario, turma);
+
+                if (alocacao.dominio) {
+                    this.alocacoes.add(alocacao);
+                }
             }
         }
     }
