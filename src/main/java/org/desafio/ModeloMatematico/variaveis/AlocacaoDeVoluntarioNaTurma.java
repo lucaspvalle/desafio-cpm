@@ -11,6 +11,7 @@ import org.desafio.ModeloMatematico.Variaveis;
 public class AlocacaoDeVoluntarioNaTurma {
     public Voluntario voluntario;
     public Turma turma;
+
     public Boolean dominio;
     public MPVariable variavel;
 
@@ -29,20 +30,22 @@ public class AlocacaoDeVoluntarioNaTurma {
     }
 
     private boolean voluntarioTemPreferenciaDeTurma() {
-        if ((this.voluntario.getProgressao() == PreferenciaDeProgressaoDeTurma.PROGRESSAO_INDIFERENTE)) {
+        PreferenciaDeProgressaoDeTurma preferenciaDoVoluntario = this.voluntario.getProgressao();
+        Turma turmaAtualDoVoluntario = this.voluntario.getTurmaAtual();
+
+        if (preferenciaDoVoluntario == PreferenciaDeProgressaoDeTurma.PROGRESSAO_INDIFERENTE) {
             return true;
         }
 
-        Turma turmaAtualDoVoluntario = this.voluntario.getTurmaAtual();
-        Turma turmaSeguinteDoVoluntario;
-
-        if (this.voluntario.getProgressao() == PreferenciaDeProgressaoDeTurma.ACOMPANHAR) {
-            turmaSeguinteDoVoluntario = turmaAtualDoVoluntario.getTurmaSeguinte();
-        } else { //PreferenciaDeProgressaoDeTurma.PERMANECER
-            turmaSeguinteDoVoluntario = turmaAtualDoVoluntario;
+        if (preferenciaDoVoluntario == PreferenciaDeProgressaoDeTurma.PERMANECER) {
+            return this.turma.equals(turmaAtualDoVoluntario);
         }
 
-        return (this.turma == turmaSeguinteDoVoluntario);
+        if (this.voluntario.getProgressao() == PreferenciaDeProgressaoDeTurma.ACOMPANHAR) {
+            return this.turma.equals(turmaAtualDoVoluntario.getTurmaSeguinte());
+        }
+
+        return false;
     }
 
     public int getSolucao() {
