@@ -78,6 +78,6 @@ public class VoluntariosTest {
 
     @Test
     public void verificaVoluntariosEmMesmaEscala() {
-        assert true;
+        assert this.voluntarios.getVoluntarioPorId(56).getVoluntariosNaMesmaEscala().get(0).getId().equals(59);
     }
 }
