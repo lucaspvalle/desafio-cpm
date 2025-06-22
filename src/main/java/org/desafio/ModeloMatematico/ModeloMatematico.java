@@ -120,6 +120,8 @@ public class ModeloMatematico {
                     alocacao.turma.getFaixaEtaria()
             );
         }
+
+        System.out.println(alocacoesSugeridas.size() + " voluntários foram alocados.");
     }
 
     public ModeloMatematico(VoluntarioDao voluntarios, TurmaDao turmas, boolean debug) {

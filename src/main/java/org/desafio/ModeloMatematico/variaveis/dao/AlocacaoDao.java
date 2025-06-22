@@ -12,6 +12,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class AlocacaoDao {
+    // FIXME: em vez de ser um ArrayList, transformar em um HashMap<Turma, HashMap<Voluntario, Alocacao>>
     ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoes = new ArrayList<>();
 
     public ArrayList<AlocacaoDeVoluntarioNaTurma> filtrarAlocacoes(Predicate<AlocacaoDeVoluntarioNaTurma> predicate) {

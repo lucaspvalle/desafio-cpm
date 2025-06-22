@@ -14,8 +14,12 @@ import java.util.ArrayList;
  * <p>sum(TURMA, v_Alocacao(VOLUNTARIO, TURMA)) <= 1</p>
  */
 public class PermiteApenasUmaAlocacaoDoVoluntario {
-    public PermiteApenasUmaAlocacaoDoVoluntario(MPSolver solver, Voluntario voluntario, ArrayList<AlocacaoDeVoluntarioNaTurma> possiveisAlocacoesDoVoluntario) {
-        MPConstraint cUnicaAlocacao = solver.makeConstraint(0, 1, "c_UnicaAlocacao{" + voluntario + "}");
-        possiveisAlocacoesDoVoluntario.forEach(alocacao -> cUnicaAlocacao.setCoefficient(alocacao.variavel, 1));
+    public PermiteApenasUmaAlocacaoDoVoluntario(
+            MPSolver solver,
+            Voluntario voluntario,
+            ArrayList<AlocacaoDeVoluntarioNaTurma> possiveisAlocacoesDoVoluntario
+    ) {
+        MPConstraint constr = solver.makeConstraint(0, 1, "c_UnicaAlocacao{" + voluntario + "}");
+        possiveisAlocacoesDoVoluntario.forEach(alocacao -> constr.setCoefficient(alocacao.variavel, 1));
     }
 }

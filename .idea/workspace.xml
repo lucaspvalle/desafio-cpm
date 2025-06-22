@@ -6,32 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="c77c7d55-f7c5-4b66-8686-35d0155737aa" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/ControlaPeriodoSugeridoParaEscala.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FolgaMaisCalourosNaTurma.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FolgaMaisHomensNaTurma.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FolgaMaisMulheresNaTurma.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FolgaMaisVeteranosNaTurma.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FolgaMaximoDeVoluntariosNaTurma.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FolgaMinimoDeVoluntariosNaTurma.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/LiberaPeriodoParaMesmaEscala.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/Variavel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/dao/LiberaPeriodoParaMesmaEscalaDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/dao/VariaveisDeTurmaDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/Parametros.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ModeloDeDados/NivelDeConhecimentoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ModeloMatematico/SolucaoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/ModeloMatematico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/ModeloMatematico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/Restricoes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/Variaveis.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/dao/AlocacaoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/dao/AlocacaoDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/AlocacaoDeVoluntariosEmMesmaEscala.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/AlocacaoDeVoluntariosEmMesmaEscala.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/PermiteApenasUmaAlocacaoDoVoluntario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/PermiteApenasUmaAlocacaoDoVoluntario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/ProporcaoDeExperienciaEmTurmas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/ProporcaoDeExperienciaEmTurmas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/ProporcaoDeGeneroEmTurmas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/ProporcaoDeGeneroEmTurmas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/QuantidadeDeVoluntariosEmTurma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/QuantidadeDeVoluntariosEmTurma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/AlocacaoDeVoluntarioNaTurma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/AlocacaoDeVoluntarioNaTurma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/dao/AlocacaoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/dao/AlocacaoDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +69,7 @@
     "Application.Main.executor": "Run",
     "JUnit.CSVTest.executor": "Run",
     "JUnit.CSVTest.verificaLeituraDeCabecalho.executor": "Debug",
+    "JUnit.NivelDeConhecimentoTest.executor": "Run",
     "JUnit.TurmasTest.executor": "Run",
     "JUnit.VoluntariosTest.executor": "Run",
     "JUnit.VoluntariosTest.verificaVoluntariosEmMesmaEscala.executor": "Debug",
@@ -131,6 +114,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="NivelDeConhecimentoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="desafio-cpm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ModeloDeDados.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ModeloDeDados" />
+      <option name="MAIN_CLASS_NAME" value="ModeloDeDados.NivelDeConhecimentoTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TurmasTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="desafio-cpm" />
       <extension name="coverage">
@@ -163,12 +161,14 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.NivelDeConhecimentoTest" />
       <item itemvalue="JUnit.TurmasTest" />
       <item itemvalue="JUnit.VoluntariosTest" />
       <item itemvalue="JUnit.CSVTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.NivelDeConhecimentoTest" />
         <item itemvalue="JUnit.VoluntariosTest" />
         <item itemvalue="JUnit.CSVTest" />
         <item itemvalue="JUnit.TurmasTest" />
@@ -347,7 +347,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750514967201</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="refactor:&#10;- cria classe de variável para herdar métodos genéricos&#10;- explicita criação de variáveis de folga&#10;- desativa modelagem de mesma escala por ora&#10;feat:&#10;- encorpora relatório de solução com atributos&#10;- retira parametrização do código para arquivo separado">
+      <option name="closed" value="true" />
+      <created>1750612851393</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1750612851393</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -402,7 +410,8 @@
     <MESSAGE value="feat: adiciona testes unitários para integração de voluntários" />
     <MESSAGE value="refactor: simplifica legibilidade de verificação de preferência de turma do voluntário" />
     <MESSAGE value="refactor:&#10;- apenas guarda a alocação se houver domínio de variável para reduzir complexidade de iteração&#10;- unifica utilidades de modelo em uma mesma classe&#10;- exporta solução em linha de comando em vez de arquivo csv&#10;feat:&#10;- ignora arquivo LP em versionamento" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor:&#10;- apenas guarda a alocação se houver domínio de variável para reduzir complexidade de iteração&#10;- unifica utilidades de modelo em uma mesma classe&#10;- exporta solução em linha de comando em vez de arquivo csv&#10;feat:&#10;- ignora arquivo LP em versionamento" />
+    <MESSAGE value="refactor:&#10;- cria classe de variável para herdar métodos genéricos&#10;- explicita criação de variáveis de folga&#10;- desativa modelagem de mesma escala por ora&#10;feat:&#10;- encorpora relatório de solução com atributos&#10;- retira parametrização do código para arquivo separado" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor:&#10;- cria classe de variável para herdar métodos genéricos&#10;- explicita criação de variáveis de folga&#10;- desativa modelagem de mesma escala por ora&#10;feat:&#10;- encorpora relatório de solução com atributos&#10;- retira parametrização do código para arquivo separado" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
