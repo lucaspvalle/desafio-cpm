@@ -12,6 +12,6 @@ public class Main {
         TurmaDao turmas = importador.importarTurmas();
         VoluntarioDao voluntarios = importador.importarVoluntarios(turmas);
 
-        new ModeloMatematico(voluntarios, turmas, false);
+        new ModeloMatematico(voluntarios, turmas, true);
     }
 }

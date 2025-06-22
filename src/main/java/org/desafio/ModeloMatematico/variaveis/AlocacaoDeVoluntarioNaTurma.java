@@ -1,19 +1,18 @@
 package org.desafio.ModeloMatematico.variaveis;
 
-import com.google.ortools.linearsolver.MPVariable;
+import com.google.ortools.linearsolver.MPSolver;
 import org.desafio.ModeloDeDados.Turma;
 import org.desafio.ModeloDeDados.Voluntario;
 import org.desafio.ModeloDeDados.enums.PreferenciaDeFaixaEtaria;
 import org.desafio.ModeloDeDados.enums.PreferenciaDePeriodo;
 import org.desafio.ModeloDeDados.enums.PreferenciaDeProgressaoDeTurma;
-import org.desafio.ModeloMatematico.Variaveis;
 
-public class AlocacaoDeVoluntarioNaTurma {
+public class AlocacaoDeVoluntarioNaTurma extends Variavel {
     public Voluntario voluntario;
     public Turma turma;
 
-    public Boolean dominio;
-    public MPVariable variavel;
+    public boolean dominio;
+    public Double peso;
 
     private boolean voluntarioTemNivelParaTurma() {
         return (this.voluntario.getNivel().getValor() >= this.turma.getNivel().getValor());
@@ -48,26 +47,19 @@ public class AlocacaoDeVoluntarioNaTurma {
         return false;
     }
 
-    public int getSolucao() {
-        if (this.variavel != null) {
-            return (int) this.variavel.solutionValue();
-        } else {
-            return 0;
-        }
-    }
-
-    public AlocacaoDeVoluntarioNaTurma(Variaveis variaveis, Voluntario voluntario, Turma turma) {
+    public AlocacaoDeVoluntarioNaTurma(MPSolver solver, Voluntario voluntario, Turma turma) {
         this.voluntario = voluntario;
         this.turma = turma;
 
         this.dominio = (
                 voluntarioTemNivelParaTurma()
-                & voluntarioTemPreferenciaPeloPeriodoDaTurma()
-                & voluntarioTemPreferenciaPelaFaixaEtariaDaTurma()
-                & voluntarioTemPreferenciaDeTurma());
+                        & voluntarioTemPreferenciaPeloPeriodoDaTurma()
+                        & voluntarioTemPreferenciaPelaFaixaEtariaDaTurma()
+                        & voluntarioTemPreferenciaDeTurma());
 
+        this.peso = this.voluntario.getComprometimento();
         if (this.dominio) {
-            this.variavel = variaveis.makeBoolVar(toString(), this.voluntario.getComprometimento());
+            this.variavel = makeBoolVar(solver, toString(), this.peso);
         }
     }
 

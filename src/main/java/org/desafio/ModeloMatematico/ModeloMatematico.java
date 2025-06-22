@@ -2,18 +2,84 @@ package org.desafio.ModeloMatematico;
 
 import com.google.ortools.Loader;
 import com.google.ortools.linearsolver.MPSolver;
+import org.desafio.ModeloDeDados.Turma;
+import org.desafio.ModeloDeDados.Voluntario;
 import org.desafio.ModeloDeDados.dao.TurmaDao;
 import org.desafio.ModeloDeDados.dao.VoluntarioDao;
+import org.desafio.ModeloMatematico.restricoes.PermiteApenasUmaAlocacaoDoVoluntario;
+import org.desafio.ModeloMatematico.restricoes.ProporcaoDeExperienciaEmTurmas;
+import org.desafio.ModeloMatematico.restricoes.ProporcaoDeGeneroEmTurmas;
+import org.desafio.ModeloMatematico.restricoes.QuantidadeDeVoluntariosEmTurma;
 import org.desafio.ModeloMatematico.variaveis.AlocacaoDeVoluntarioNaTurma;
+import org.desafio.ModeloMatematico.variaveis.dao.AlocacaoDao;
+import org.desafio.ModeloMatematico.variaveis.dao.LiberaPeriodoParaMesmaEscalaDao;
+import org.desafio.ModeloMatematico.variaveis.dao.VariaveisDeTurmaDao;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class ModeloMatematico {
     MPSolver solver;
-    public Variaveis variaveis;
+
+    public AlocacaoDao alocacoes;
+    public VariaveisDeTurmaDao variaveisDeTurma;
+    public LiberaPeriodoParaMesmaEscalaDao periodosLiberadosParaEscala;
+
+    public void createVariables(VoluntarioDao voluntarios, TurmaDao turmas) {
+        this.alocacoes = new AlocacaoDao(solver, voluntarios, turmas);
+        this.variaveisDeTurma = new VariaveisDeTurmaDao(solver, turmas);
+        this.periodosLiberadosParaEscala = new LiberaPeriodoParaMesmaEscalaDao(solver, voluntarios);
+    }
+
+    public void createConstraints(VoluntarioDao voluntarios, TurmaDao turmas) {
+        for (Turma turma : turmas.getAllTurmas()) {
+            ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesNaTurma =
+                    this.alocacoes.filtrarAlocacoes(alocacao -> alocacao.turma.equals(turma));
+            if (alocacoesNaTurma.isEmpty()) {
+                continue;
+            }
+
+            new QuantidadeDeVoluntariosEmTurma(
+                    solver, turma, alocacoesNaTurma,
+                    this.variaveisDeTurma.getFolgaMaximoVoluntarios(turma),
+                    this.variaveisDeTurma.getFolgaMinimoVoluntarios(turma)
+                    );
+            new ProporcaoDeGeneroEmTurmas(
+                    solver, turma, alocacoesNaTurma,
+                    this.variaveisDeTurma.getFolgaHomens(turma), this.variaveisDeTurma.getFolgaMulheres(turma)
+            );
+            new ProporcaoDeExperienciaEmTurmas(
+                    solver, turma, alocacoesNaTurma,
+                    this.variaveisDeTurma.getFolgaCalouros(turma), this.variaveisDeTurma.getFolgaVeteranos(turma)
+            );
+            // TODO: grau de comprometimento
+        }
+
+        for (Voluntario voluntario : voluntarios.getAllVoluntarios()) {
+            ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesDoVoluntario =
+                    this.alocacoes.filtrarAlocacoes(alocacao -> alocacao.voluntario.equals(voluntario));
+            if (alocacoesDoVoluntario.isEmpty()) {
+                continue;
+            }
+            new PermiteApenasUmaAlocacaoDoVoluntario(solver, voluntario, alocacoesDoVoluntario);
+        }
+
+//        for (LiberaPeriodoParaMesmaEscala escala : this.periodosLiberadosParaEscala.getPossiveisEscalas()) {
+////            ArrayList<LiberaPeriodoParaMesmaEscala> alocacoesDoVoluntarioNaEscala =
+////                    this.alocacoes.filtrarAlocacoes(alocacao -> alocacao.voluntario.equals(voluntarioNaEscala))
+////            if (alocacoesDoVoluntarioNaEscala.isEmpty()) {
+////                continue;
+////            }
+////
+////            new AlocacaoDeVoluntariosEmMesmaEscala(
+////                    solver, voluntario, voluntarioNaEscala,
+////                    alocacoesDoVoluntario, alocacoesDoVoluntarioNaEscala
+////            );
+//        }
+    }
 
     public void exportModelAsLpFormat() {
         Path path = Paths.get("lpModel.txt");
@@ -38,14 +104,21 @@ public class ModeloMatematico {
     private void printSolution() {
         System.out.println();
 
-        String formatter = "%-15s %-15s%n";
-        System.out.printf(formatter, "Volunteer", "Class");
-        System.out.printf(formatter, "---------", "-----");
+        String formatter = "%-15s %-15s %-15s %-15s %-15s%n";
+        System.out.printf(formatter, "Voluntário", "Gênero", "Turma", "Período", "Faixa Etária");
+        System.out.printf(formatter, "----------", "------", "-----", "-------", "-------------");
 
-        for (AlocacaoDeVoluntarioNaTurma alocacao : this.variaveis.alocacoes.getAlocacoes()) {
-            if (alocacao.getSolucao() >= 1) {
-                System.out.printf(formatter, alocacao.voluntario.getId(), alocacao.turma.getNome());
-            }
+        ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesSugeridas =
+                this.alocacoes.filtrarAlocacoes(alocacao -> alocacao.getSolution() >= 1);
+        for (AlocacaoDeVoluntarioNaTurma alocacao : alocacoesSugeridas) {
+            System.out.printf(
+                    formatter,
+                    alocacao.voluntario.getId(),
+                    alocacao.voluntario.getGenero(),
+                    alocacao.turma.getNome(),
+                    alocacao.turma.getPeriodo(),
+                    alocacao.turma.getFaixaEtaria()
+            );
         }
     }
 
@@ -53,10 +126,9 @@ public class ModeloMatematico {
         Loader.loadNativeLibraries();
         this.solver = MPSolver.createSolver("SCIP");
 
-        this.variaveis = new Variaveis(solver, voluntarios, turmas);
-        new Restricoes(solver, variaveis, voluntarios, turmas);
+        createVariables(voluntarios, turmas);
+        createConstraints(voluntarios, turmas);
 
-        variaveis.adicionarVariaveisNaFuncaoObjetivo();
         solver.objective().setMaximization();
 
         MPSolver.ResultStatus resultStatus = solver.solve();

@@ -2,11 +2,11 @@ package org.desafio.ModeloMatematico.restricoes;
 
 import com.google.ortools.linearsolver.MPConstraint;
 import com.google.ortools.linearsolver.MPSolver;
-import com.google.ortools.linearsolver.MPVariable;
 import org.desafio.ModeloDeDados.Turma;
 import org.desafio.ModeloDeDados.Voluntario;
-import org.desafio.ModeloMatematico.Variaveis;
 import org.desafio.ModeloMatematico.variaveis.AlocacaoDeVoluntarioNaTurma;
+import org.desafio.ModeloMatematico.variaveis.FolgaMaisCalourosNaTurma;
+import org.desafio.ModeloMatematico.variaveis.FolgaMaisVeteranosNaTurma;
 
 import java.util.ArrayList;
 
@@ -24,7 +24,7 @@ import java.util.ArrayList;
  * próximo possível.</p>
  */
 public class ProporcaoDeExperienciaEmTurmas {
-    private int calculaCoeficienteDoVoluntarioPelaExperiencia(Voluntario voluntario) {
+    private int calculaCoeficientePelaExperiencia(Voluntario voluntario) {
         if (voluntario.isVeterano()) {
             return 1;
         } else {
@@ -32,20 +32,20 @@ public class ProporcaoDeExperienciaEmTurmas {
         }
     }
 
-    public ProporcaoDeExperienciaEmTurmas(MPSolver solver, Variaveis variaveis, Turma turma, ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesNaTurma) {
-        MPConstraint cCalculaProporcaoDeExperienciaNaTurma = solver.makeConstraint(
+    public ProporcaoDeExperienciaEmTurmas(
+            MPSolver solver,
+            Turma turma,
+            ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesNaTurma,
+            FolgaMaisCalourosNaTurma folgaCalouros,
+            FolgaMaisVeteranosNaTurma folgaVeteranos
+    ) {
+        MPConstraint constr = solver.makeConstraint(
                 0, 0,"c_CalculaProporcaoDeExperienciaNaTurma{" + turma + "}");
 
         alocacoesNaTurma.forEach(alocacao ->
-                cCalculaProporcaoDeExperienciaNaTurma.setCoefficient(
-                        alocacao.variavel, calculaCoeficienteDoVoluntarioPelaExperiencia(alocacao.voluntario)));
+                constr.setCoefficient(alocacao.variavel, calculaCoeficientePelaExperiencia(alocacao.voluntario)));
 
-        MPVariable vFolgaMaisCalourosAlocadosNaTurma = variaveis.makeNumVar(
-                0, alocacoesNaTurma.size(), "v_FolgaMaisCalourosAlocadosNaTurma{" + turma + "}", -1.0);
-        MPVariable vFolgaMaisVeteranosAlocadasNaTurma = variaveis.makeNumVar(
-                0, alocacoesNaTurma.size(), "v_FolgaMaisVeteranosAlocadasNaTurma{" + turma + "}", -1.0);
-
-        cCalculaProporcaoDeExperienciaNaTurma.setCoefficient(vFolgaMaisCalourosAlocadosNaTurma, 1);
-        cCalculaProporcaoDeExperienciaNaTurma.setCoefficient(vFolgaMaisVeteranosAlocadasNaTurma, -1);
+        constr.setCoefficient(folgaCalouros.variavel, 1);
+        constr.setCoefficient(folgaVeteranos.variavel, -1);
     }
 }

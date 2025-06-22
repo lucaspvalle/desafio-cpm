@@ -4,19 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c77c7d55-f7c5-4b66-8686-35d0155737aa" name="Changes" comment="refactor:&#10;- separa métodos de imprimir em uma classe específica&#10;docs:&#10;- adiciona modelagem em linguagem algébrica e explica o objetivo de cada classe de restrição&#10;feat:&#10;- adiciona novas restrições para priorizar proporções&#10;fix:&#10;- corrige modelagem de voluntários alocados na mesma escala">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/Restricoes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/Variaveis.java" afterDir="false" />
+    <list default="true" id="c77c7d55-f7c5-4b66-8686-35d0155737aa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/ControlaPeriodoSugeridoParaEscala.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FolgaMaisCalourosNaTurma.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FolgaMaisHomensNaTurma.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FolgaMaisMulheresNaTurma.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FolgaMaisVeteranosNaTurma.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FolgaMaximoDeVoluntariosNaTurma.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FolgaMinimoDeVoluntariosNaTurma.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/LiberaPeriodoParaMesmaEscala.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/Variavel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/dao/LiberaPeriodoParaMesmaEscalaDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/dao/VariaveisDeTurmaDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/desafio/Parametros.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/ModeloMatematico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/ModeloMatematico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/dao/AlocacaoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/dao/AlocacaoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/Restricoes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/Variaveis.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/dao/AlocacaoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/dao/AlocacaoDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/AlocacaoDeVoluntariosEmMesmaEscala.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/AlocacaoDeVoluntariosEmMesmaEscala.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/PermiteApenasUmaAlocacaoDoVoluntario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/PermiteApenasUmaAlocacaoDoVoluntario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/ProporcaoDeExperienciaEmTurmas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/ProporcaoDeExperienciaEmTurmas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/ProporcaoDeGeneroEmTurmas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/ProporcaoDeGeneroEmTurmas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/QuantidadeDeVoluntariosEmTurma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/restricoes/QuantidadeDeVoluntariosEmTurma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/utils/PrintModeloMatematico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/utils/PrintModeloMatematico.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/AlocacaoDeVoluntarioNaTurma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/AlocacaoDeVoluntarioNaTurma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/desafio/ModeloMatematico/variaveis/FuncaoObjetivo.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,14 +59,12 @@
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="8394a99f-fbad-483a-a8f4-0eb4b88ba643" />
   </component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="8394a99f-fbad-483a-a8f4-0eb4b88ba643" />
-        <option name="url" value="https://github.com/lucaspvalle/desafio-cpm.git" />
-      </UrlAndAccount>
-    </option>
-  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/lucaspvalle/desafio-cpm.git&quot;,
+    &quot;accountId&quot;: &quot;8394a99f-fbad-483a-a8f4-0eb4b88ba643&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -71,23 +84,31 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
+    "JUnit.CSVTest.executor": "Run",
+    "JUnit.CSVTest.verificaLeituraDeCabecalho.executor": "Debug",
+    "JUnit.TurmasTest.executor": "Run",
+    "JUnit.VoluntariosTest.executor": "Run",
+    "JUnit.VoluntariosTest.verificaVoluntariosEmMesmaEscala.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
     "onboarding.tips.debug.path": "C:/Users/LucasPerini/IdeaProjects/desafio-cpm/src/main/java/org/desafio/Main.java",
     "settings.editor.selected.configurable": "configurable.group.appearance"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.desafio.ModeloMatematico.variaveis.dao" />
       <recent name="org.desafio.ModeloMatematico.restricoes" />
       <recent name="org.desafio.ModeloMatematico.variaveis" />
       <recent name="org.desafio.integracao.MappingStrategy" />
       <recent name="org.desafio.integracao" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.desafio.Main" />
       <module name="desafio-cpm" />
@@ -95,8 +116,69 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CSVTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="desafio-cpm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Integracao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Integracao" />
+      <option name="MAIN_CLASS_NAME" value="Integracao.CSVTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TurmasTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="desafio-cpm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Integracao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Integracao" />
+      <option name="MAIN_CLASS_NAME" value="Integracao.TurmasTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VoluntariosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="desafio-cpm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Integracao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Integracao" />
+      <option name="MAIN_CLASS_NAME" value="Integracao.VoluntariosTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.TurmasTest" />
+      <item itemvalue="JUnit.VoluntariosTest" />
+      <item itemvalue="JUnit.CSVTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.VoluntariosTest" />
+        <item itemvalue="JUnit.CSVTest" />
+        <item itemvalue="JUnit.TurmasTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="c77c7d55-f7c5-4b66-8686-35d0155737aa" name="Changes" comment="" />
@@ -201,7 +283,71 @@
       <option name="project" value="LOCAL" />
       <updated>1711326041558</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="refactor:&#10;- separa funções de leitura e escrita de CSV em arquivo específico&#10;fix:&#10;- garante que arquivos CSV sempre sejam tratados em UTF-8&#10;feat:&#10;- adiciona testes unitários para arquivos CSV">
+      <option name="closed" value="true" />
+      <created>1750447747044</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1750447747044</updated>
+    </task>
+    <task id="LOCAL-00014" summary="refactor: separa ainda mais responsabilidades de classes de arquivos de integração e importação de dados">
+      <option name="closed" value="true" />
+      <created>1750450016864</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1750450016864</updated>
+    </task>
+    <task id="LOCAL-00015" summary="refactor: trata arquivos CSV em um único local em vez de propragar a regra para dentro da classe">
+      <option name="closed" value="true" />
+      <created>1750452048248</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1750452048248</updated>
+    </task>
+    <task id="LOCAL-00016" summary="feat: adiciona testes unitários para importação de turmas">
+      <option name="closed" value="true" />
+      <created>1750461757233</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1750461757233</updated>
+    </task>
+    <task id="LOCAL-00017" summary="refactor: altera integrador para trabalhar com encoding windows-1252">
+      <option name="closed" value="true" />
+      <created>1750463629603</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1750463629603</updated>
+    </task>
+    <task id="LOCAL-00018" summary="feat: adiciona testes unitários para integração de voluntários">
+      <option name="closed" value="true" />
+      <created>1750463654360</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1750463654360</updated>
+    </task>
+    <task id="LOCAL-00019" summary="refactor: simplifica legibilidade de verificação de preferência de turma do voluntário">
+      <option name="closed" value="true" />
+      <created>1750511944542</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1750511944542</updated>
+    </task>
+    <task id="LOCAL-00020" summary="refactor:&#10;- apenas guarda a alocação se houver domínio de variável para reduzir complexidade de iteração&#10;- unifica utilidades de modelo em uma mesma classe&#10;- exporta solução em linha de comando em vez de arquivo csv&#10;feat:&#10;- ignora arquivo LP em versionamento">
+      <option name="closed" value="true" />
+      <created>1750514967201</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1750514967201</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -248,7 +394,15 @@
     <MESSAGE value="feat: esboça restrição de voluntários em mesma escala" />
     <MESSAGE value="feat: adiciona arquivos para novas restrições (ainda a serem implementadas)" />
     <MESSAGE value="refactor:&#10;- separa métodos de imprimir em uma classe específica&#10;docs:&#10;- adiciona modelagem em linguagem algébrica e explica o objetivo de cada classe de restrição&#10;feat:&#10;- adiciona novas restrições para priorizar proporções&#10;fix:&#10;- corrige modelagem de voluntários alocados na mesma escala" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor:&#10;- separa métodos de imprimir em uma classe específica&#10;docs:&#10;- adiciona modelagem em linguagem algébrica e explica o objetivo de cada classe de restrição&#10;feat:&#10;- adiciona novas restrições para priorizar proporções&#10;fix:&#10;- corrige modelagem de voluntários alocados na mesma escala" />
+    <MESSAGE value="refactor:&#10;- separa funções de leitura e escrita de CSV em arquivo específico&#10;fix:&#10;- garante que arquivos CSV sempre sejam tratados em UTF-8&#10;feat:&#10;- adiciona testes unitários para arquivos CSV" />
+    <MESSAGE value="refactor: separa ainda mais responsabilidades de classes de arquivos de integração e importação de dados" />
+    <MESSAGE value="refactor: trata arquivos CSV em um único local em vez de propragar a regra para dentro da classe" />
+    <MESSAGE value="feat: adiciona testes unitários para importação de turmas" />
+    <MESSAGE value="refactor: altera integrador para trabalhar com encoding windows-1252" />
+    <MESSAGE value="feat: adiciona testes unitários para integração de voluntários" />
+    <MESSAGE value="refactor: simplifica legibilidade de verificação de preferência de turma do voluntário" />
+    <MESSAGE value="refactor:&#10;- apenas guarda a alocação se houver domínio de variável para reduzir complexidade de iteração&#10;- unifica utilidades de modelo em uma mesma classe&#10;- exporta solução em linha de comando em vez de arquivo csv&#10;feat:&#10;- ignora arquivo LP em versionamento" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor:&#10;- apenas guarda a alocação se houver domínio de variável para reduzir complexidade de iteração&#10;- unifica utilidades de modelo em uma mesma classe&#10;- exporta solução em linha de comando em vez de arquivo csv&#10;feat:&#10;- ignora arquivo LP em versionamento" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
