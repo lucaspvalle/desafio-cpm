@@ -19,7 +19,7 @@ public class ControlaPeriodoSugeridoParaEscala {
             MPSolver solver,
             Voluntario voluntario,
             Voluntario voluntarioNaMesmaEscala,
-            ArrayList<LiberaPeriodoParaMesmaEscala> liberaPeriodo
+            ArrayList<LiberaPeriodoParaMesmaEscala> periodosLiberados
     ) {
         MPConstraint constr = solver.makeConstraint(
                 0, 1, "c_PermiteApenasUmPeriodoParaMesmaEscala{"
@@ -27,6 +27,6 @@ public class ControlaPeriodoSugeridoParaEscala {
                         + ", " + voluntarioNaMesmaEscala
                         + "}");
 
-        liberaPeriodo.forEach(periodo -> constr.setCoefficient(periodo.variavel, 1));
+        periodosLiberados.forEach(periodo -> constr.setCoefficient(periodo.variavel, 1));
     }
 }

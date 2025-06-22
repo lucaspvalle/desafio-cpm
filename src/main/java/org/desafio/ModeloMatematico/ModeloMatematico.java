@@ -68,16 +68,16 @@ public class ModeloMatematico {
         }
 
 //        for (LiberaPeriodoParaMesmaEscala escala : this.periodosLiberadosParaEscala.getPossiveisEscalas()) {
-////            ArrayList<LiberaPeriodoParaMesmaEscala> alocacoesDoVoluntarioNaEscala =
-////                    this.alocacoes.filtrarAlocacoes(alocacao -> alocacao.voluntario.equals(voluntarioNaEscala))
-////            if (alocacoesDoVoluntarioNaEscala.isEmpty()) {
-////                continue;
-////            }
-////
-////            new AlocacaoDeVoluntariosEmMesmaEscala(
-////                    solver, voluntario, voluntarioNaEscala,
-////                    alocacoesDoVoluntario, alocacoesDoVoluntarioNaEscala
-////            );
+//            ArrayList<LiberaPeriodoParaMesmaEscala> alocacoesDoVoluntarioNaEscala =
+//                    this.alocacoes.filtrarAlocacoes(alocacao -> alocacao.voluntario.equals(voluntarioNaEscala))
+//            if (alocacoesDoVoluntarioNaEscala.isEmpty()) {
+//                continue;
+//            }
+//
+//            new AlocacaoDeVoluntariosEmMesmaEscala(
+//                    solver, voluntario, voluntarioNaEscala,
+//                    alocacoesDoVoluntario, alocacoesDoVoluntarioNaEscala
+//            );
 //        }
     }
 
