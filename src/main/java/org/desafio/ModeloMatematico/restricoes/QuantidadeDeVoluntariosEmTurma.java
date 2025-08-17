@@ -3,12 +3,13 @@ package org.desafio.ModeloMatematico.restricoes;
 import com.google.ortools.linearsolver.MPConstraint;
 import com.google.ortools.linearsolver.MPSolver;
 import org.desafio.ModeloDeDados.Turma;
+import org.desafio.ModeloDeDados.Voluntario;
 import org.desafio.ModeloMatematico.variaveis.AlocacaoDeVoluntarioNaTurma;
 import org.desafio.ModeloMatematico.variaveis.FolgaMaximoDeVoluntariosNaTurma;
 import org.desafio.ModeloMatematico.variaveis.FolgaMinimoDeVoluntariosNaTurma;
 import org.desafio.Parametros;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Restrição para limitar a quantidade de voluntários alocados em uma turma, conforme a capacidade ideal.
@@ -27,7 +28,7 @@ public class QuantidadeDeVoluntariosEmTurma {
     public QuantidadeDeVoluntariosEmTurma(
             MPSolver solver,
             Turma turma,
-            ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesNaTurma,
+            HashMap<Voluntario, AlocacaoDeVoluntarioNaTurma> alocacoesNaTurma,
             FolgaMaximoDeVoluntariosNaTurma folgaMaxima,
             FolgaMinimoDeVoluntariosNaTurma folgaMinima
     ) {
@@ -41,7 +42,7 @@ public class QuantidadeDeVoluntariosEmTurma {
                 inf,
                 "c_NumeroMinimo{" + turma + "}");
 
-        for (AlocacaoDeVoluntarioNaTurma alocacao : alocacoesNaTurma) {
+        for (AlocacaoDeVoluntarioNaTurma alocacao : alocacoesNaTurma.values()) {
             cNumeroMaximo.setCoefficient(alocacao.variavel, 1);
             cNumeroMinimo.setCoefficient(alocacao.variavel, 1);
         }

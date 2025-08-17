@@ -8,7 +8,7 @@ import org.desafio.ModeloMatematico.variaveis.AlocacaoDeVoluntarioNaTurma;
 import org.desafio.ModeloMatematico.variaveis.FolgaMaisCalourosNaTurma;
 import org.desafio.ModeloMatematico.variaveis.FolgaMaisVeteranosNaTurma;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Restrição para que haja uma proporção o mais igualitária possível de calouros e veteranos alocados em uma mesma turma.
@@ -35,15 +35,15 @@ public class ProporcaoDeExperienciaEmTurmas {
     public ProporcaoDeExperienciaEmTurmas(
             MPSolver solver,
             Turma turma,
-            ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesNaTurma,
+            HashMap<Voluntario, AlocacaoDeVoluntarioNaTurma> alocacoesNaTurma,
             FolgaMaisCalourosNaTurma folgaCalouros,
             FolgaMaisVeteranosNaTurma folgaVeteranos
     ) {
         MPConstraint constr = solver.makeConstraint(
                 0, 0,"c_CalculaProporcaoDeExperienciaNaTurma{" + turma + "}");
 
-        alocacoesNaTurma.forEach(alocacao ->
-                constr.setCoefficient(alocacao.variavel, calculaCoeficientePelaExperiencia(alocacao.voluntario)));
+        alocacoesNaTurma.forEach((vol, alocacao) ->
+                constr.setCoefficient(alocacao.variavel, calculaCoeficientePelaExperiencia(vol)));
 
         constr.setCoefficient(folgaCalouros.variavel, 1);
         constr.setCoefficient(folgaVeteranos.variavel, -1);

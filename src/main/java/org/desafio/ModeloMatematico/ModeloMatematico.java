@@ -19,7 +19,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ModeloMatematico {
     MPSolver solver;
@@ -36,8 +37,8 @@ public class ModeloMatematico {
 
     public void createConstraints(VoluntarioDao voluntarios, TurmaDao turmas) {
         for (Turma turma : turmas.getAllTurmas()) {
-            ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesNaTurma =
-                    this.alocacoes.filtrarAlocacoes(alocacao -> alocacao.turma.equals(turma));
+            HashMap<Voluntario, AlocacaoDeVoluntarioNaTurma> alocacoesNaTurma =
+                    this.alocacoes.getAlocacoesDaTurma(turma);
             if (alocacoesNaTurma.isEmpty()) {
                 continue;
             }
@@ -59,8 +60,8 @@ public class ModeloMatematico {
         }
 
         for (Voluntario voluntario : voluntarios.getAllVoluntarios()) {
-            ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesDoVoluntario =
-                    this.alocacoes.filtrarAlocacoes(alocacao -> alocacao.voluntario.equals(voluntario));
+            HashMap<Turma, AlocacaoDeVoluntarioNaTurma> alocacoesDoVoluntario =
+                    this.alocacoes.getAlocacoesDoVoluntario(voluntario);
             if (alocacoesDoVoluntario.isEmpty()) {
                 continue;
             }
@@ -108,20 +109,24 @@ public class ModeloMatematico {
         System.out.printf(formatter, "Voluntário", "Gênero", "Turma", "Período", "Faixa Etária");
         System.out.printf(formatter, "----------", "------", "-----", "-------", "-------------");
 
-        ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesSugeridas =
-                this.alocacoes.filtrarAlocacoes(alocacao -> alocacao.getSolution() >= 1);
-        for (AlocacaoDeVoluntarioNaTurma alocacao : alocacoesSugeridas) {
-            System.out.printf(
-                    formatter,
-                    alocacao.voluntario.getId(),
-                    alocacao.voluntario.getGenero(),
-                    alocacao.turma.getNome(),
-                    alocacao.turma.getPeriodo(),
-                    alocacao.turma.getFaixaEtaria()
-            );
+        int contagem = 0;
+        HashMap<Turma, HashMap<Voluntario, AlocacaoDeVoluntarioNaTurma>> alocacoesSugeridas =
+                this.alocacoes.getAlocacoesSugeridas();
+        for (Map.Entry<Turma, HashMap<Voluntario, AlocacaoDeVoluntarioNaTurma>> entradaTurma :
+                alocacoesSugeridas.entrySet()) {
+            for (AlocacaoDeVoluntarioNaTurma alocacao : entradaTurma.getValue().values()) {
+                System.out.printf(
+                        formatter,
+                        alocacao.voluntario.getId(),
+                        alocacao.voluntario.getGenero(),
+                        alocacao.turma.getNome(),
+                        alocacao.turma.getPeriodo(),
+                        alocacao.turma.getFaixaEtaria()
+                );
+                contagem += 1;
+            }
         }
-
-        System.out.println(alocacoesSugeridas.size() + " voluntários foram alocados.");
+        System.out.println(contagem + " voluntários foram alocados.");
     }
 
     public ModeloMatematico(VoluntarioDao voluntarios, TurmaDao turmas, boolean debug) {

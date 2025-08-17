@@ -9,7 +9,7 @@ import org.desafio.ModeloMatematico.variaveis.AlocacaoDeVoluntarioNaTurma;
 import org.desafio.ModeloMatematico.variaveis.FolgaMaisHomensNaTurma;
 import org.desafio.ModeloMatematico.variaveis.FolgaMaisMulheresNaTurma;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Restrição para que haja uma proporção o mais igualitária possível de homens e mulheres alocados em uma mesma turma.
@@ -32,15 +32,15 @@ public class ProporcaoDeGeneroEmTurmas {
     public ProporcaoDeGeneroEmTurmas(
             MPSolver solver,
             Turma turma,
-            ArrayList<AlocacaoDeVoluntarioNaTurma> alocacoesNaTurma,
+            HashMap<Voluntario, AlocacaoDeVoluntarioNaTurma> alocacoesNaTurma,
             FolgaMaisHomensNaTurma folgaHomens,
             FolgaMaisMulheresNaTurma folgaMulheres
     ) {
         MPConstraint constr = solver.makeConstraint(
                 0, 0,"c_CalculaProporcaoDeGeneroNaTurma{" + turma + "}");
 
-        alocacoesNaTurma.forEach(alocacao ->
-                constr.setCoefficient(alocacao.variavel, calculaCoeficientPeloGenero(alocacao.voluntario)));
+        alocacoesNaTurma.forEach((vol, alocacao) ->
+                constr.setCoefficient(alocacao.variavel, calculaCoeficientPeloGenero(vol)));
 
         constr.setCoefficient(folgaHomens.variavel, -1);
         constr.setCoefficient(folgaMulheres.variavel, 1);
