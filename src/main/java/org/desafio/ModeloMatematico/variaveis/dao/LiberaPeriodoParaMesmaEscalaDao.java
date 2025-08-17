@@ -7,30 +7,60 @@ import org.desafio.ModeloDeDados.enums.PreferenciaDePeriodo;
 import org.desafio.ModeloMatematico.variaveis.LiberaPeriodoParaMesmaEscala;
 import org.desafio.ModeloMatematico.variaveis.Variavel;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LiberaPeriodoParaMesmaEscalaDao extends Variavel {
-    ArrayList<LiberaPeriodoParaMesmaEscala> escalas = new ArrayList<>();
+    HashMap<Voluntario, HashMap<Voluntario, HashMap<PreferenciaDePeriodo, LiberaPeriodoParaMesmaEscala>>> escalas =
+            new HashMap<>();
 
-    public ArrayList<LiberaPeriodoParaMesmaEscala> getPossiveisEscalas() {
-        return this.escalas;
+    public HashMap<Voluntario, HashMap<PreferenciaDePeriodo, LiberaPeriodoParaMesmaEscala>> getMesmaEscalaDoVoluntario(
+            Voluntario voluntario) {
+        if (this.escalas.containsKey(voluntario)) {
+            return this.escalas.get(voluntario);
+        }
+        return new HashMap<>();
     }
 
-
     public LiberaPeriodoParaMesmaEscalaDao(MPSolver solver, VoluntarioDao voluntarios) {
-        // TODO: poderia verificar se o mesmo cadastro de escala está feito para (voluntário, voluntário_aux)
-        //       e (voluntário_aux, voluntário) para evitar a construção de restrições redundantes.
         for (Voluntario voluntario : voluntarios.getAllVoluntarios()) {
+            // Quebra se não possuir voluntário em mesma escala
+            if (voluntario.getVoluntariosNaMesmaEscala().isEmpty()) {
+                continue;
+            }
+            HashMap<Voluntario, HashMap<PreferenciaDePeriodo, LiberaPeriodoParaMesmaEscala>> mesmaEscalaDoVoluntario =
+                    new HashMap<>();
+
             for (Voluntario voluntarioNaMesmaEscala : voluntario.getVoluntariosNaMesmaEscala()) {
+                HashMap<PreferenciaDePeriodo, LiberaPeriodoParaMesmaEscala> mesmaEscalaDoVoluntarioAux = new HashMap<>();
+
+                // Verifica se o voluntário na mesma escala já foi referenciado na chave invertida de (vol, vol2)
+                // e (vol2, vol)
+                if (this.escalas.containsKey(voluntarioNaMesmaEscala)) {
+                    HashMap<Voluntario, HashMap<PreferenciaDePeriodo, LiberaPeriodoParaMesmaEscala>> verificacaoDeEscala =
+                            this.escalas.get(voluntarioNaMesmaEscala);
+
+                    if (verificacaoDeEscala.containsKey(voluntario)) {
+                        continue;
+                    }
+                }
+
                 for (PreferenciaDePeriodo periodo : PreferenciaDePeriodo.getPeriodosValidos()) {
                     LiberaPeriodoParaMesmaEscala escala = new LiberaPeriodoParaMesmaEscala(
                             solver, voluntario, voluntarioNaMesmaEscala, periodo
                     );
 
                     if (escala.dominio) {
-                        this.escalas.add(escala);
+                        mesmaEscalaDoVoluntarioAux.put(periodo, escala);
                     }
                 }
+
+                if (!mesmaEscalaDoVoluntarioAux.isEmpty()) {
+                    mesmaEscalaDoVoluntario.put(voluntarioNaMesmaEscala, mesmaEscalaDoVoluntarioAux);
+                }
+            }
+
+            if (!mesmaEscalaDoVoluntario.isEmpty()) {
+                this.escalas.put(voluntario, mesmaEscalaDoVoluntario);
             }
         }
     }

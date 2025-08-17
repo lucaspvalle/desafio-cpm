@@ -6,11 +6,10 @@ import org.desafio.ModeloDeDados.Turma;
 import org.desafio.ModeloDeDados.Voluntario;
 import org.desafio.ModeloDeDados.dao.TurmaDao;
 import org.desafio.ModeloDeDados.dao.VoluntarioDao;
-import org.desafio.ModeloMatematico.restricoes.PermiteApenasUmaAlocacaoDoVoluntario;
-import org.desafio.ModeloMatematico.restricoes.ProporcaoDeExperienciaEmTurmas;
-import org.desafio.ModeloMatematico.restricoes.ProporcaoDeGeneroEmTurmas;
-import org.desafio.ModeloMatematico.restricoes.QuantidadeDeVoluntariosEmTurma;
+import org.desafio.ModeloDeDados.enums.PreferenciaDePeriodo;
+import org.desafio.ModeloMatematico.restricoes.*;
 import org.desafio.ModeloMatematico.variaveis.AlocacaoDeVoluntarioNaTurma;
+import org.desafio.ModeloMatematico.variaveis.LiberaPeriodoParaMesmaEscala;
 import org.desafio.ModeloMatematico.variaveis.dao.AlocacaoDao;
 import org.desafio.ModeloMatematico.variaveis.dao.LiberaPeriodoParaMesmaEscalaDao;
 import org.desafio.ModeloMatematico.variaveis.dao.VariaveisDeTurmaDao;
@@ -66,20 +65,26 @@ public class ModeloMatematico {
                 continue;
             }
             new PermiteApenasUmaAlocacaoDoVoluntario(solver, voluntario, alocacoesDoVoluntario);
-        }
 
-//        for (LiberaPeriodoParaMesmaEscala escala : this.periodosLiberadosParaEscala.getPossiveisEscalas()) {
-//            ArrayList<LiberaPeriodoParaMesmaEscala> alocacoesDoVoluntarioNaEscala =
-//                    this.alocacoes.filtrarAlocacoes(alocacao -> alocacao.voluntario.equals(voluntarioNaEscala))
-//            if (alocacoesDoVoluntarioNaEscala.isEmpty()) {
-//                continue;
-//            }
-//
-//            new AlocacaoDeVoluntariosEmMesmaEscala(
-//                    solver, voluntario, voluntarioNaEscala,
-//                    alocacoesDoVoluntario, alocacoesDoVoluntarioNaEscala
-//            );
-//        }
+            HashMap<Voluntario, HashMap<PreferenciaDePeriodo, LiberaPeriodoParaMesmaEscala>> mesmaEscala =
+                    this.periodosLiberadosParaEscala.getMesmaEscalaDoVoluntario(voluntario);
+
+            for (Map.Entry<Voluntario, HashMap<PreferenciaDePeriodo, LiberaPeriodoParaMesmaEscala>> entradaMesmaEscala :
+                    mesmaEscala.entrySet()) {
+                Voluntario voluntarioNaEscala = entradaMesmaEscala.getKey();
+                HashMap<PreferenciaDePeriodo, LiberaPeriodoParaMesmaEscala> periodosLiberados =
+                        entradaMesmaEscala.getValue();
+
+                HashMap<Turma, AlocacaoDeVoluntarioNaTurma> alocacoesDoVoluntarioNaEscala =
+                        this.alocacoes.getAlocacoesDoVoluntario(voluntarioNaEscala);
+
+                new AlocacaoDeVoluntariosEmMesmaEscala(
+                    solver, voluntario, voluntarioNaEscala,
+                    alocacoesDoVoluntario, alocacoesDoVoluntarioNaEscala, periodosLiberados);
+
+                new PermiteApenasUmaMesmaEscala(solver, voluntario, voluntarioNaEscala, periodosLiberados);
+            }
+        }
     }
 
     public void exportModelAsLpFormat() {
